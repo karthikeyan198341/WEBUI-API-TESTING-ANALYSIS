@@ -1,0 +1,1315 @@
+newman
+
+PRPLOS WebUI - Authentication Tests (1000-1999)
+
+❏ Login Tests
+↳ 1001 - Valid Login
+  POST http://192.168.1.1/api/v1/auth/login  
+  200 OK ★ 10ms time ★ 345B↑ 2.57kB↓ size ★ 9↑ 7↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 52B
+  │ {
+  │     "username": "admin",
+  │     "password": "admin"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v4.0.0%2B0c6d3567%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.c05d308d4a0d75879e66.js"
+  │  integrity="sha256-QcPKguwZwI8ID0f1YTnZ9IqBWv3OYSIxP4M
+  │ 6KAcLtuE= sha512-EV4pgGfB0184pEBGo3fM37KWlLkkrvvHNQHs/
+  │ 2/6UTooNLZppzWmKllT7gD/9kLVEdLJMG4/fZj5U14cWZ7J9Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.43895c0a926a9ef996fb.js
+  │ " integrity="sha256-IM/NlO6823Pq0Ru6RCg9evMwNFSaff/O8t
+  │ rGt9jxESU= sha512-BXG43Z7+q0Dsj+nuKMPkwVdBieIUgUf7uCw5
+  │ r4osR48Zdhomw88ebFYfY+/t99JDFPgj+p5eC4FtWXpqlHpriQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-a84cab2ef69
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait   dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  8ms       2ms    (cache)      590µs           2ms              3ms        264µs     18ms  
+
+  ✓  Status code is 200
+  ✓  Response time is less than 500ms
+  1. Response has authentication token
+  2. Response has user information
+  3. Session created successfully
+
+↳ 1002 - Invalid Username
+  POST http://192.168.1.1/api/v1/auth/login  
+  200 OK ★ 4ms time ★ 356B↑ 2.57kB↓ size ★ 9↑ 7↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 63B
+  │ {
+  │     "username": "invalid_user_123",
+  │     "password": "admin"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v4.0.0%2B0c6d3567%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.c05d308d4a0d75879e66.js"
+  │  integrity="sha256-QcPKguwZwI8ID0f1YTnZ9IqBWv3OYSIxP4M
+  │ 6KAcLtuE= sha512-EV4pgGfB0184pEBGo3fM37KWlLkkrvvHNQHs/
+  │ 2/6UTooNLZppzWmKllT7gD/9kLVEdLJMG4/fZj5U14cWZ7J9Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.43895c0a926a9ef996fb.js
+  │ " integrity="sha256-IM/NlO6823Pq0Ru6RCg9evMwNFSaff/O8t
+  │ rGt9jxESU= sha512-BXG43Z7+q0Dsj+nuKMPkwVdBieIUgUf7uCw5
+  │ r4osR48Zdhomw88ebFYfY+/t99JDFPgj+p5eC4FtWXpqlHpriQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-a84cab2ef69
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  807µs     655µs   (cache)      860µs           1ms              927µs      48µs      4ms   
+
+  4. Status code is 401
+  5. Error message is correct
+  6. No token returned
+
+↳ 1003 - Invalid Password
+  POST http://192.168.1.1/api/v1/auth/login  
+  200 OK ★ 4ms time ★ 358B↑ 2.57kB↓ size ★ 9↑ 7↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 65B
+  │ {
+  │     "username": "admin",
+  │     "password": "wrong_password_123"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v4.0.0%2B0c6d3567%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.c05d308d4a0d75879e66.js"
+  │  integrity="sha256-QcPKguwZwI8ID0f1YTnZ9IqBWv3OYSIxP4M
+  │ 6KAcLtuE= sha512-EV4pgGfB0184pEBGo3fM37KWlLkkrvvHNQHs/
+  │ 2/6UTooNLZppzWmKllT7gD/9kLVEdLJMG4/fZj5U14cWZ7J9Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.43895c0a926a9ef996fb.js
+  │ " integrity="sha256-IM/NlO6823Pq0Ru6RCg9evMwNFSaff/O8t
+  │ rGt9jxESU= sha512-BXG43Z7+q0Dsj+nuKMPkwVdBieIUgUf7uCw5
+  │ r4osR48Zdhomw88ebFYfY+/t99JDFPgj+p5eC4FtWXpqlHpriQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-a84cab2ef69
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  695µs     549µs   (cache)      725µs           1ms              744µs      38µs      3ms   
+
+  7. Status code is 401
+  8. Error message is correct
+
+↳ 1004 - Empty Credentials
+  POST http://192.168.1.1/api/v1/auth/login  
+  200 OK ★ 4ms time ★ 335B↑ 2.57kB↓ size ★ 9↑ 7↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 42B
+  │ {
+  │     "username": "",
+  │     "password": ""
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v4.0.0%2B0c6d3567%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.c05d308d4a0d75879e66.js"
+  │  integrity="sha256-QcPKguwZwI8ID0f1YTnZ9IqBWv3OYSIxP4M
+  │ 6KAcLtuE= sha512-EV4pgGfB0184pEBGo3fM37KWlLkkrvvHNQHs/
+  │ 2/6UTooNLZppzWmKllT7gD/9kLVEdLJMG4/fZj5U14cWZ7J9Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.43895c0a926a9ef996fb.js
+  │ " integrity="sha256-IM/NlO6823Pq0Ru6RCg9evMwNFSaff/O8t
+  │ rGt9jxESU= sha512-BXG43Z7+q0Dsj+nuKMPkwVdBieIUgUf7uCw5
+  │ r4osR48Zdhomw88ebFYfY+/t99JDFPgj+p5eC4FtWXpqlHpriQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-a84cab2ef69
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  511µs     607µs   (cache)      696µs           1ms              821µs      57µs      3ms   
+
+  9. Status code is 400
+ 10. Error indicates missing fields
+
+↳ 1005 - SQL Injection Test
+  POST http://192.168.1.1/api/v1/auth/login  
+  200 OK ★ 4ms time ★ 362B↑ 2.57kB↓ size ★ 9↑ 7↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 69B
+  │ {
+  │     "username": "admin' OR '1'='1",
+  │     "password": "' OR '1'='1"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v4.0.0%2B0c6d3567%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.c05d308d4a0d75879e66.js"
+  │  integrity="sha256-QcPKguwZwI8ID0f1YTnZ9IqBWv3OYSIxP4M
+  │ 6KAcLtuE= sha512-EV4pgGfB0184pEBGo3fM37KWlLkkrvvHNQHs/
+  │ 2/6UTooNLZppzWmKllT7gD/9kLVEdLJMG4/fZj5U14cWZ7J9Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.43895c0a926a9ef996fb.js
+  │ " integrity="sha256-IM/NlO6823Pq0Ru6RCg9evMwNFSaff/O8t
+  │ rGt9jxESU= sha512-BXG43Z7+q0Dsj+nuKMPkwVdBieIUgUf7uCw5
+  │ r4osR48Zdhomw88ebFYfY+/t99JDFPgj+p5eC4FtWXpqlHpriQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-a84cab2ef69
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  758µs     573µs   (cache)      885µs           1ms              1ms        84µs      4ms   
+
+ 11. Status code is 400 or 401
+ 12. No database error exposed
+
+↳ 1006 - XSS Attack Test
+  POST http://192.168.1.1/api/v1/auth/login  
+  200 OK ★ 4ms time ★ 397B↑ 2.57kB↓ size ★ 9↑ 7↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 103B
+  │ {
+  │     "username": "<script>alert('XSS')</script>",
+  │     "password": "<img src=x onerror=alert('XSS')>"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v4.0.0%2B0c6d3567%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.c05d308d4a0d75879e66.js"
+  │  integrity="sha256-QcPKguwZwI8ID0f1YTnZ9IqBWv3OYSIxP4M
+  │ 6KAcLtuE= sha512-EV4pgGfB0184pEBGo3fM37KWlLkkrvvHNQHs/
+  │ 2/6UTooNLZppzWmKllT7gD/9kLVEdLJMG4/fZj5U14cWZ7J9Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.43895c0a926a9ef996fb.js
+  │ " integrity="sha256-IM/NlO6823Pq0Ru6RCg9evMwNFSaff/O8t
+  │ rGt9jxESU= sha512-BXG43Z7+q0Dsj+nuKMPkwVdBieIUgUf7uCw5
+  │ r4osR48Zdhomw88ebFYfY+/t99JDFPgj+p5eC4FtWXpqlHpriQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-a84cab2ef69
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  695µs     604µs   (cache)      725µs           1ms              1ms        67µs      4ms   
+
+ 13. Status code is 400 or 401
+  ✓  Script tags are sanitized
+
+↳ 1007 - Rate Limiting Test
+  POST http://192.168.1.1/api/v1/auth/login  
+  200 OK ★ 4ms time ★ 377B↑ 2.57kB↓ size ★ 9↑ 7↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 84B
+  │ {
+  │     "username": "test_user_{{attempt_number}}",
+  │     "password": "wrong_password"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v4.0.0%2B0c6d3567%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.c05d308d4a0d75879e66.js"
+  │  integrity="sha256-QcPKguwZwI8ID0f1YTnZ9IqBWv3OYSIxP4M
+  │ 6KAcLtuE= sha512-EV4pgGfB0184pEBGo3fM37KWlLkkrvvHNQHs/
+  │ 2/6UTooNLZppzWmKllT7gD/9kLVEdLJMG4/fZj5U14cWZ7J9Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.43895c0a926a9ef996fb.js
+  │ " integrity="sha256-IM/NlO6823Pq0Ru6RCg9evMwNFSaff/O8t
+  │ rGt9jxESU= sha512-BXG43Z7+q0Dsj+nuKMPkwVdBieIUgUf7uCw5
+  │ r4osR48Zdhomw88ebFYfY+/t99JDFPgj+p5eC4FtWXpqlHpriQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-a84cab2ef69
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  848µs     456µs   (cache)      841µs           1ms              864µs      46µs      4ms   
+
+
+↳ 1008 - Large Payload Test
+  POST http://192.168.1.1/api/v1/auth/login  
+  200 OK ★ 4ms time ★ 367B↑ 2.57kB↓ size ★ 9↑ 7↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 74B
+  │ {
+  │     "username": "{{large_string}}",
+  │     "password": "{{large_string}}"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v4.0.0%2B0c6d3567%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.c05d308d4a0d75879e66.js"
+  │  integrity="sha256-QcPKguwZwI8ID0f1YTnZ9IqBWv3OYSIxP4M
+  │ 6KAcLtuE= sha512-EV4pgGfB0184pEBGo3fM37KWlLkkrvvHNQHs/
+  │ 2/6UTooNLZppzWmKllT7gD/9kLVEdLJMG4/fZj5U14cWZ7J9Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.43895c0a926a9ef996fb.js
+  │ " integrity="sha256-IM/NlO6823Pq0Ru6RCg9evMwNFSaff/O8t
+  │ rGt9jxESU= sha512-BXG43Z7+q0Dsj+nuKMPkwVdBieIUgUf7uCw5
+  │ r4osR48Zdhomw88ebFYfY+/t99JDFPgj+p5eC4FtWXpqlHpriQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-a84cab2ef69
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  724µs     494µs   (cache)      741µs           1ms              1ms        46µs      4ms   
+
+ 14. Server handles large payload gracefully
+
+❏ Session Management
+↳ 1101 - Validate Session
+  GET http://192.168.1.1/api/v1/auth/session/validate  
+  200 OK ★ 4ms time ★ 275B↑ 2.57kB↓ size ★ 8↑ 7↓ headers ★ 0 cookies
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v4.0.0%2B0c6d3567%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.c05d308d4a0d75879e66.js"
+  │  integrity="sha256-QcPKguwZwI8ID0f1YTnZ9IqBWv3OYSIxP4M
+  │ 6KAcLtuE= sha512-EV4pgGfB0184pEBGo3fM37KWlLkkrvvHNQHs/
+  │ 2/6UTooNLZppzWmKllT7gD/9kLVEdLJMG4/fZj5U14cWZ7J9Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.43895c0a926a9ef996fb.js
+  │ " integrity="sha256-IM/NlO6823Pq0Ru6RCg9evMwNFSaff/O8t
+  │ rGt9jxESU= sha512-BXG43Z7+q0Dsj+nuKMPkwVdBieIUgUf7uCw5
+  │ r4osR48Zdhomw88ebFYfY+/t99JDFPgj+p5eC4FtWXpqlHpriQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-a84cab2ef69
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       570µs   (cache)      721µs           1ms              1ms        68µs      5ms   
+
+  ✓  Status code is 200
+ 15. Session is valid
+ 16. Session has remaining time
+
+↳ 1102 - Refresh Token
+  POST http://192.168.1.1/api/v1/auth/refresh  
+  200 OK ★ 3ms time ★ 286B↑ 2.55kB↓ size ★ 9↑ 6↓ headers ★ 0 cookies
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v4.0.0%2B0c6d3567%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.c05d308d4a0d75879e66.js"
+  │  integrity="sha256-QcPKguwZwI8ID0f1YTnZ9IqBWv3OYSIxP4M
+  │ 6KAcLtuE= sha512-EV4pgGfB0184pEBGo3fM37KWlLkkrvvHNQHs/
+  │ 2/6UTooNLZppzWmKllT7gD/9kLVEdLJMG4/fZj5U14cWZ7J9Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.43895c0a926a9ef996fb.js
+  │ " integrity="sha256-IM/NlO6823Pq0Ru6RCg9evMwNFSaff/O8t
+  │ rGt9jxESU= sha512-BXG43Z7+q0Dsj+nuKMPkwVdBieIUgUf7uCw5
+  │ r4osR48Zdhomw88ebFYfY+/t99JDFPgj+p5eC4FtWXpqlHpriQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-a84cab2ef69
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       432µs   (cache)      (cache)         1ms              870µs      53µs      3ms   
+
+  ✓  Status code is 200
+ 17. New token received
+
+↳ 1103 - Logout
+  POST http://192.168.1.1/api/v1/auth/logout  
+  200 OK ★ 3ms time ★ 285B↑ 2.55kB↓ size ★ 9↑ 6↓ headers ★ 0 cookies
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v4.0.0%2B0c6d3567%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.c05d308d4a0d75879e66.js"
+  │  integrity="sha256-QcPKguwZwI8ID0f1YTnZ9IqBWv3OYSIxP4M
+  │ 6KAcLtuE= sha512-EV4pgGfB0184pEBGo3fM37KWlLkkrvvHNQHs/
+  │ 2/6UTooNLZppzWmKllT7gD/9kLVEdLJMG4/fZj5U14cWZ7J9Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.43895c0a926a9ef996fb.js
+  │ " integrity="sha256-IM/NlO6823Pq0Ru6RCg9evMwNFSaff/O8t
+  │ rGt9jxESU= sha512-BXG43Z7+q0Dsj+nuKMPkwVdBieIUgUf7uCw5
+  │ r4osR48Zdhomw88ebFYfY+/t99JDFPgj+p5eC4FtWXpqlHpriQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-a84cab2ef69
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  689µs     318µs   (cache)      (cache)         1ms              1ms        74µs      3ms   
+
+  ✓  Status code is 200
+ 18. Logout successful
+
+↳ 1104 - Access with Expired Token
+  GET http://192.168.1.1/api/v1/auth/session/validate  
+  200 OK ★ 3ms time ★ 304B↑ 2.57kB↓ size ★ 8↑ 7↓ headers ★ 0 cookies
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v4.0.0%2B0c6d3567%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.c05d308d4a0d75879e66.js"
+  │  integrity="sha256-QcPKguwZwI8ID0f1YTnZ9IqBWv3OYSIxP4M
+  │ 6KAcLtuE= sha512-EV4pgGfB0184pEBGo3fM37KWlLkkrvvHNQHs/
+  │ 2/6UTooNLZppzWmKllT7gD/9kLVEdLJMG4/fZj5U14cWZ7J9Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.43895c0a926a9ef996fb.js
+  │ " integrity="sha256-IM/NlO6823Pq0Ru6RCg9evMwNFSaff/O8t
+  │ rGt9jxESU= sha512-BXG43Z7+q0Dsj+nuKMPkwVdBieIUgUf7uCw5
+  │ r4osR48Zdhomw88ebFYfY+/t99JDFPgj+p5eC4FtWXpqlHpriQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-a84cab2ef69
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  862µs     378µs   (cache)      (cache)         1ms              788µs      57µs      3ms   
+
+ 19. Status code is 401
+ 20. Error indicates token issue
+
+❏ Password Management
+↳ 1201 - Change Password
+  POST http://192.168.1.1/api/v1/auth/password/change  
+  200 OK ★ 3ms time ★ 459B↑ 2.57kB↓ size ★ 10↑ 7↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 117B
+  │ {
+  │     "current_password": "admin",
+  │     "new_password": "NewPassword123!",
+  │     "confirm_password": "NewPassword123!"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v4.0.0%2B0c6d3567%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.c05d308d4a0d75879e66.js"
+  │  integrity="sha256-QcPKguwZwI8ID0f1YTnZ9IqBWv3OYSIxP4M
+  │ 6KAcLtuE= sha512-EV4pgGfB0184pEBGo3fM37KWlLkkrvvHNQHs/
+  │ 2/6UTooNLZppzWmKllT7gD/9kLVEdLJMG4/fZj5U14cWZ7J9Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.43895c0a926a9ef996fb.js
+  │ " integrity="sha256-IM/NlO6823Pq0Ru6RCg9evMwNFSaff/O8t
+  │ rGt9jxESU= sha512-BXG43Z7+q0Dsj+nuKMPkwVdBieIUgUf7uCw5
+  │ r4osR48Zdhomw88ebFYfY+/t99JDFPgj+p5eC4FtWXpqlHpriQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-a84cab2ef69
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  621µs     374µs   (cache)      (cache)         1ms              1ms        50µs      3ms   
+
+  ✓  Status code is 200
+ 21. Password changed successfully
+
+↳ 1202 - Password Reset Request
+  POST http://192.168.1.1/api/v1/auth/password/reset-request  
+  200 OK ★ 4ms time ★ 345B↑ 2.57kB↓ size ★ 9↑ 7↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 35B
+  │ {
+  │     "email": "admin@prplos.com"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v4.0.0%2B0c6d3567%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.c05d308d4a0d75879e66.js"
+  │  integrity="sha256-QcPKguwZwI8ID0f1YTnZ9IqBWv3OYSIxP4M
+  │ 6KAcLtuE= sha512-EV4pgGfB0184pEBGo3fM37KWlLkkrvvHNQHs/
+  │ 2/6UTooNLZppzWmKllT7gD/9kLVEdLJMG4/fZj5U14cWZ7J9Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.43895c0a926a9ef996fb.js
+  │ " integrity="sha256-IM/NlO6823Pq0Ru6RCg9evMwNFSaff/O8t
+  │ rGt9jxESU= sha512-BXG43Z7+q0Dsj+nuKMPkwVdBieIUgUf7uCw5
+  │ r4osR48Zdhomw88ebFYfY+/t99JDFPgj+p5eC4FtWXpqlHpriQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-a84cab2ef69
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  724µs     585µs   (cache)      780µs           1ms              718µs      48µs      4ms   
+
+  ✓  Status code is 200
+ 22. Reset email sent
+
+↳ 1203 - Weak Password Test
+  POST http://192.168.1.1/api/v1/auth/password/change  
+  200 OK ★ 4ms time ★ 434B↑ 2.57kB↓ size ★ 10↑ 7↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 93B
+  │ {
+  │     "current_password": "admin",
+  │     "new_password": "123",
+  │     "confirm_password": "123"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v4.0.0%2B0c6d3567%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.c05d308d4a0d75879e66.js"
+  │  integrity="sha256-QcPKguwZwI8ID0f1YTnZ9IqBWv3OYSIxP4M
+  │ 6KAcLtuE= sha512-EV4pgGfB0184pEBGo3fM37KWlLkkrvvHNQHs/
+  │ 2/6UTooNLZppzWmKllT7gD/9kLVEdLJMG4/fZj5U14cWZ7J9Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.43895c0a926a9ef996fb.js
+  │ " integrity="sha256-IM/NlO6823Pq0Ru6RCg9evMwNFSaff/O8t
+  │ rGt9jxESU= sha512-BXG43Z7+q0Dsj+nuKMPkwVdBieIUgUf7uCw5
+  │ r4osR48Zdhomw88ebFYfY+/t99JDFPgj+p5eC4FtWXpqlHpriQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-a84cab2ef69
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  462µs     656µs   (cache)      755µs           1ms              690µs      122µs     3ms   
+
+ 23. Status code is 400
+ 24. Weak password rejected
+
+❏ Two-Factor Authentication
+↳ 1301 - Enable 2FA
+  POST http://192.168.1.1/api/v1/auth/2fa/enable  
+  200 OK ★ 3ms time ★ 303B↑ 2.55kB↓ size ★ 9↑ 6↓ headers ★ 0 cookies
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v4.0.0%2B0c6d3567%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.c05d308d4a0d75879e66.js"
+  │  integrity="sha256-QcPKguwZwI8ID0f1YTnZ9IqBWv3OYSIxP4M
+  │ 6KAcLtuE= sha512-EV4pgGfB0184pEBGo3fM37KWlLkkrvvHNQHs/
+  │ 2/6UTooNLZppzWmKllT7gD/9kLVEdLJMG4/fZj5U14cWZ7J9Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.43895c0a926a9ef996fb.js
+  │ " integrity="sha256-IM/NlO6823Pq0Ru6RCg9evMwNFSaff/O8t
+  │ rGt9jxESU= sha512-BXG43Z7+q0Dsj+nuKMPkwVdBieIUgUf7uCw5
+  │ r4osR48Zdhomw88ebFYfY+/t99JDFPgj+p5eC4FtWXpqlHpriQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-a84cab2ef69
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  718µs     468µs   (cache)      704µs           1ms              610µs      36µs      3ms   
+
+  ✓  Status code is 200
+ 25. QR code generated
+
+↳ 1302 - Verify 2FA Code
+  POST http://192.168.1.1/api/v1/auth/2fa/verify  
+  200 OK ★ 3ms time ★ 360B↑ 2.57kB↓ size ★ 10↑ 7↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 24B
+  │ {
+  │     "code": "123456"
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v4.0.0%2B0c6d3567%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.c05d308d4a0d75879e66.js"
+  │  integrity="sha256-QcPKguwZwI8ID0f1YTnZ9IqBWv3OYSIxP4M
+  │ 6KAcLtuE= sha512-EV4pgGfB0184pEBGo3fM37KWlLkkrvvHNQHs/
+  │ 2/6UTooNLZppzWmKllT7gD/9kLVEdLJMG4/fZj5U14cWZ7J9Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.43895c0a926a9ef996fb.js
+  │ " integrity="sha256-IM/NlO6823Pq0Ru6RCg9evMwNFSaff/O8t
+  │ rGt9jxESU= sha512-BXG43Z7+q0Dsj+nuKMPkwVdBieIUgUf7uCw5
+  │ r4osR48Zdhomw88ebFYfY+/t99JDFPgj+p5eC4FtWXpqlHpriQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-a84cab2ef69
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  888µs     275µs   (cache)      (cache)         1ms              805µs      54µs      3ms   
+
+  ✓  Response received
+
+┌─────────────────────────┬───────────────────┬──────────────────┐
+│                         │          executed │           failed │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              iterations │                 1 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│                requests │                17 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│            test-scripts │                17 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│      prerequest-scripts │                 0 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              assertions │                35 │               25 │
+├─────────────────────────┴───────────────────┴──────────────────┤
+│ total run duration: 2.1s                                       │
+├────────────────────────────────────────────────────────────────┤
+│ total data received: 40.07kB (approx)                          │
+├────────────────────────────────────────────────────────────────┤
+│ average response time: 4ms [min: 3ms, max: 10ms, s.d.: 1ms]    │
+├────────────────────────────────────────────────────────────────┤
+│ average first byte time: 1ms [min: 1ms, max: 2ms, s.d.: 222µs] │
+└────────────────────────────────────────────────────────────────┘
+
+[31m   # [39m[31m failure        [39m[31m detail                                                                   [39m
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 01.  JSONError       Response has authentication token                                        
+                      Unexpected token '<' at 1:1                                              
+                      <!DOCTYPE html>                                                          
+                      ^                                                                        
+                      at assertion:2 in test-script                                            
+                      inside "Login Tests / 1001 - Valid Login"                                
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 02.  JSONError       Response has user information                                            
+                      Unexpected token '<' at 1:1                                              
+                      <!DOCTYPE html>                                                          
+                      ^                                                                        
+                      at assertion:3 in test-script                                            
+                      inside "Login Tests / 1001 - Valid Login"                                
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 03.  JSONError       Session created successfully                                             
+                      Unexpected token '<' at 1:1                                              
+                      <!DOCTYPE html>                                                          
+                      ^                                                                        
+                      at assertion:4 in test-script                                            
+                      inside "Login Tests / 1001 - Valid Login"                                
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 04.  AssertionError  Status code is 401                                                       
+                      expected response to have status code 401 but got 200                    
+                      at assertion:0 in test-script                                            
+                      inside "Login Tests / 1002 - Invalid Username"                           
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 05.  JSONError       Error message is correct                                                 
+                      Unexpected token '<' at 1:1                                              
+                      <!DOCTYPE html>                                                          
+                      ^                                                                        
+                      at assertion:1 in test-script                                            
+                      inside "Login Tests / 1002 - Invalid Username"                           
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 06.  JSONError       No token returned                                                        
+                      Unexpected token '<' at 1:1                                              
+                      <!DOCTYPE html>                                                          
+                      ^                                                                        
+                      at assertion:2 in test-script                                            
+                      inside "Login Tests / 1002 - Invalid Username"                           
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 07.  AssertionError  Status code is 401                                                       
+                      expected response to have status code 401 but got 200                    
+                      at assertion:0 in test-script                                            
+                      inside "Login Tests / 1003 - Invalid Password"                           
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 08.  JSONError       Error message is correct                                                 
+                      Unexpected token '<' at 1:1                                              
+                      <!DOCTYPE html>                                                          
+                      ^                                                                        
+                      at assertion:1 in test-script                                            
+                      inside "Login Tests / 1003 - Invalid Password"                           
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 09.  AssertionError  Status code is 400                                                       
+                      expected response to have status code 400 but got 200                    
+                      at assertion:0 in test-script                                            
+                      inside "Login Tests / 1004 - Empty Credentials"                          
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 10.  JSONError       Error indicates missing fields                                           
+                      Unexpected token '<' at 1:1                                              
+                      <!DOCTYPE html>                                                          
+                      ^                                                                        
+                      at assertion:1 in test-script                                            
+                      inside "Login Tests / 1004 - Empty Credentials"                          
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 11.  AssertionError  Status code is 400 or 401                                                
+                      expected 200 to be one of [ 400, 401 ]                                   
+                      at assertion:0 in test-script                                            
+                      inside "Login Tests / 1005 - SQL Injection Test"                         
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 12.  AssertionError  No database error exposed                                                
+                      expected '<!doctype html>\n<html>\n  <head>\n  …' to not include 'query' 
+                      at assertion:1 in test-script                                            
+                      inside "Login Tests / 1005 - SQL Injection Test"                         
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 13.  AssertionError  Status code is 400 or 401                                                
+                      expected 200 to be one of [ 400, 401 ]                                   
+                      at assertion:0 in test-script                                            
+                      inside "Login Tests / 1006 - XSS Attack Test"                            
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 14.  AssertionError  Server handles large payload gracefully                                  
+                      expected 200 to be one of [ 400, 413 ]                                   
+                      at assertion:0 in test-script                                            
+                      inside "Login Tests / 1008 - Large Payload Test"                         
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 15.  JSONError       Session is valid                                                         
+                      Unexpected token '<' at 1:1                                              
+                      <!DOCTYPE html>                                                          
+                      ^                                                                        
+                      at assertion:1 in test-script                                            
+                      inside "Session Management / 1101 - Validate Session"                    
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 16.  JSONError       Session has remaining time                                               
+                      Unexpected token '<' at 1:1                                              
+                      <!DOCTYPE html>                                                          
+                      ^                                                                        
+                      at assertion:2 in test-script                                            
+                      inside "Session Management / 1101 - Validate Session"                    
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 17.  JSONError       New token received                                                       
+                      Unexpected token '<' at 1:1                                              
+                      <!DOCTYPE html>                                                          
+                      ^                                                                        
+                      at assertion:1 in test-script                                            
+                      inside "Session Management / 1102 - Refresh Token"                       
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 18.  JSONError       Logout successful                                                        
+                      Unexpected token '<' at 1:1                                              
+                      <!DOCTYPE html>                                                          
+                      ^                                                                        
+                      at assertion:1 in test-script                                            
+                      inside "Session Management / 1103 - Logout"                              
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 19.  AssertionError  Status code is 401                                                       
+                      expected response to have status code 401 but got 200                    
+                      at assertion:0 in test-script                                            
+                      inside "Session Management / 1104 - Access with Expired Token"           
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 20.  JSONError       Error indicates token issue                                              
+                      Unexpected token '<' at 1:1                                              
+                      <!DOCTYPE html>                                                          
+                      ^                                                                        
+                      at assertion:1 in test-script                                            
+                      inside "Session Management / 1104 - Access with Expired Token"           
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 21.  JSONError       Password changed successfully                                            
+                      Unexpected token '<' at 1:1                                              
+                      <!DOCTYPE html>                                                          
+                      ^                                                                        
+                      at assertion:1 in test-script                                            
+                      inside "Password Management / 1201 - Change Password"                    
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 22.  JSONError       Reset email sent                                                         
+                      Unexpected token '<' at 1:1                                              
+                      <!DOCTYPE html>                                                          
+                      ^                                                                        
+                      at assertion:1 in test-script                                            
+                      inside "Password Management / 1202 - Password Reset Request"             
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 23.  AssertionError  Status code is 400                                                       
+                      expected response to have status code 400 but got 200                    
+                      at assertion:0 in test-script                                            
+                      inside "Password Management / 1203 - Weak Password Test"                 
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 24.  JSONError       Weak password rejected                                                   
+                      Unexpected token '<' at 1:1                                              
+                      <!DOCTYPE html>                                                          
+                      ^                                                                        
+                      at assertion:1 in test-script                                            
+                      inside "Password Management / 1203 - Weak Password Test"                 
+[90m     [39m[90m                [39m[90m                                                                          [39m
+ 25.  JSONError       QR code generated                                                        
+                      Unexpected token '<' at 1:1                                              
+                      <!DOCTYPE html>                                                          
+                      ^                                                                        
+                      at assertion:1 in test-script                                            
+                      inside "Two-Factor Authentication / 1301 - Enable 2FA"                   

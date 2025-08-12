@@ -1,0 +1,1127 @@
+newman
+
+PRPLOS WebUI - Dashboard Tests (2000-2999)
+
+❏ Dashboard Overview
+↳ 2001 - Get Dashboard Summary
+  ┌
+  │ 'No auth token found. Please run authentication tests 
+  │ first.'
+  └
+  GET http://192.168.1.1/api/v1/dashboard/summary  
+  200 OK ★ 15ms time ★ 247B↑ 2.57kB↓ size ★ 7↑ 7↓ headers ★ 0 cookies
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v3.1.0%2B96edebbf%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.118abea18a8fd45a2711.js"
+  │  integrity="sha256-9Luu8s+h+/07NgnawUxjiKf6YHoSC234ORl
+  │ +8VfcNQA= sha512-ZwcqiOYoz+oLey3AL8JQT9J41y8LfqAzbG6AC
+  │ iWOrVVmQAH+VhQX7c8PEZhmJewy7f4q3E+9BIKLOy4XgLuw6Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.659eeb3647b0851a1edb.js
+  │ " integrity="sha256-u0+j6DkAO6s3n3b7lZfINRDEc4YiHLStB6
+  │ vr3kIuGxw= sha512-hvJF9duocC19ROq44t9tWCly2KQWbKYE9agc
+  │ xg3vYqqZR20Twul8wHes2w8WXB5lRvR8QDm5CK3J8JqoxfVnKQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-96043de95c0
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait   dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  12ms      4ms    (cache)      1ms             2ms              5ms        430µs     27ms  
+
+  ✓  Status code is 200
+  ✓  Response time is less than 1000ms
+  1. Dashboard has system status
+  2. Dashboard has device info
+  3. Dashboard has network summary
+
+↳ 2002 - Get System Health
+  ┌
+  │ 'No auth token found. Please run authentication tests 
+  │ first.'
+  └
+  GET http://192.168.1.1/api/v1/dashboard/health  
+  200 OK ★ 6ms time ★ 246B↑ 2.57kB↓ size ★ 7↑ 7↓ headers ★ 0 cookies
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v3.1.0%2B96edebbf%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.118abea18a8fd45a2711.js"
+  │  integrity="sha256-9Luu8s+h+/07NgnawUxjiKf6YHoSC234ORl
+  │ +8VfcNQA= sha512-ZwcqiOYoz+oLey3AL8JQT9J41y8LfqAzbG6AC
+  │ iWOrVVmQAH+VhQX7c8PEZhmJewy7f4q3E+9BIKLOy4XgLuw6Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.659eeb3647b0851a1edb.js
+  │ " integrity="sha256-u0+j6DkAO6s3n3b7lZfINRDEc4YiHLStB6
+  │ vr3kIuGxw= sha512-hvJF9duocC19ROq44t9tWCly2KQWbKYE9agc
+  │ xg3vYqqZR20Twul8wHes2w8WXB5lRvR8QDm5CK3J8JqoxfVnKQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-96043de95c0
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait   dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       1ms    (cache)      (cache)         1ms              1ms        110µs     6ms   
+
+  ✓  Status code is 200
+  4. Health status is valid
+  5. Component health details present
+
+↳ 2003 - Get Real-time Metrics
+  ┌
+  │ 'No auth token found. Please run authentication tests 
+  │ first.'
+  └
+  GET http://192.168.1.1/api/v1/dashboard/metrics/realtime  
+  200 OK ★ 5ms time ★ 256B↑ 2.57kB↓ size ★ 7↑ 7↓ headers ★ 0 cookies
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v3.1.0%2B96edebbf%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.118abea18a8fd45a2711.js"
+  │  integrity="sha256-9Luu8s+h+/07NgnawUxjiKf6YHoSC234ORl
+  │ +8VfcNQA= sha512-ZwcqiOYoz+oLey3AL8JQT9J41y8LfqAzbG6AC
+  │ iWOrVVmQAH+VhQX7c8PEZhmJewy7f4q3E+9BIKLOy4XgLuw6Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.659eeb3647b0851a1edb.js
+  │ " integrity="sha256-u0+j6DkAO6s3n3b7lZfINRDEc4YiHLStB6
+  │ vr3kIuGxw= sha512-hvJF9duocC19ROq44t9tWCly2KQWbKYE9agc
+  │ xg3vYqqZR20Twul8wHes2w8WXB5lRvR8QDm5CK3J8JqoxfVnKQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-96043de95c0
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       824µs   (cache)      (cache)         2ms              1ms        71µs      5ms   
+
+  ✓  Status code is 200
+  6. Metrics contain timestamp
+  7. CPU metrics are valid
+  8. Memory metrics are valid
+
+↳ 2004 - Get Historical Metrics
+  ┌
+  │ 'No auth token found. Please run authentication tests 
+  │ first.'
+  └
+  GET http://192.168.1.1/api/v1/dashboard/metrics/history?period=24h&interval=1h  
+  200 OK ★ 5ms time ★ 278B↑ 2.57kB↓ size ★ 7↑ 7↓ headers ★ 0 cookies
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v3.1.0%2B96edebbf%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.118abea18a8fd45a2711.js"
+  │  integrity="sha256-9Luu8s+h+/07NgnawUxjiKf6YHoSC234ORl
+  │ +8VfcNQA= sha512-ZwcqiOYoz+oLey3AL8JQT9J41y8LfqAzbG6AC
+  │ iWOrVVmQAH+VhQX7c8PEZhmJewy7f4q3E+9BIKLOy4XgLuw6Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.659eeb3647b0851a1edb.js
+  │ " integrity="sha256-u0+j6DkAO6s3n3b7lZfINRDEc4YiHLStB6
+  │ vr3kIuGxw= sha512-hvJF9duocC19ROq44t9tWCly2KQWbKYE9agc
+  │ xg3vYqqZR20Twul8wHes2w8WXB5lRvR8QDm5CK3J8JqoxfVnKQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-96043de95c0
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       531µs   (cache)      (cache)         1ms              1ms        63µs      5ms   
+
+  ✓  Status code is 200
+  9. Historical data is array
+ 10. Data points have required fields
+
+↳ 2005 - Get Active Alerts
+  ┌
+  │ 'No auth token found. Please run authentication tests 
+  │ first.'
+  └
+  GET http://192.168.1.1/api/v1/dashboard/alerts/active  
+  200 OK ★ 4ms time ★ 253B↑ 2.57kB↓ size ★ 7↑ 7↓ headers ★ 0 cookies
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v3.1.0%2B96edebbf%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.118abea18a8fd45a2711.js"
+  │  integrity="sha256-9Luu8s+h+/07NgnawUxjiKf6YHoSC234ORl
+  │ +8VfcNQA= sha512-ZwcqiOYoz+oLey3AL8JQT9J41y8LfqAzbG6AC
+  │ iWOrVVmQAH+VhQX7c8PEZhmJewy7f4q3E+9BIKLOy4XgLuw6Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.659eeb3647b0851a1edb.js
+  │ " integrity="sha256-u0+j6DkAO6s3n3b7lZfINRDEc4YiHLStB6
+  │ vr3kIuGxw= sha512-hvJF9duocC19ROq44t9tWCly2KQWbKYE9agc
+  │ xg3vYqqZR20Twul8wHes2w8WXB5lRvR8QDm5CK3J8JqoxfVnKQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-96043de95c0
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  871µs     458µs   (cache)      (cache)         1ms              1ms        99µs      4ms   
+
+  ✓  Status code is 200
+ 11. Alerts structure is valid
+ 12. Alert objects have required fields
+
+↳ 2006 - Get Network Status Overview
+  ┌
+  │ 'No auth token found. Please run authentication tests 
+  │ first.'
+  └
+  GET http://192.168.1.1/api/v1/dashboard/network/status  
+  200 OK ★ 4ms time ★ 254B↑ 2.57kB↓ size ★ 7↑ 7↓ headers ★ 0 cookies
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v3.1.0%2B96edebbf%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.118abea18a8fd45a2711.js"
+  │  integrity="sha256-9Luu8s+h+/07NgnawUxjiKf6YHoSC234ORl
+  │ +8VfcNQA= sha512-ZwcqiOYoz+oLey3AL8JQT9J41y8LfqAzbG6AC
+  │ iWOrVVmQAH+VhQX7c8PEZhmJewy7f4q3E+9BIKLOy4XgLuw6Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.659eeb3647b0851a1edb.js
+  │ " integrity="sha256-u0+j6DkAO6s3n3b7lZfINRDEc4YiHLStB6
+  │ vr3kIuGxw= sha512-hvJF9duocC19ROq44t9tWCly2KQWbKYE9agc
+  │ xg3vYqqZR20Twul8wHes2w8WXB5lRvR8QDm5CK3J8JqoxfVnKQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-96043de95c0
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  818µs     448µs   (cache)      (cache)         2ms              1ms        91µs      4ms   
+
+  ✓  Status code is 200
+ 13. Network interfaces listed
+ 14. Interface data is valid
+
+↳ 2007 - Get Service Status
+  ┌
+  │ 'No auth token found. Please run authentication tests 
+  │ first.'
+  └
+  GET http://192.168.1.1/api/v1/dashboard/services/status  
+  200 OK ★ 4ms time ★ 255B↑ 2.57kB↓ size ★ 7↑ 7↓ headers ★ 0 cookies
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v3.1.0%2B96edebbf%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.118abea18a8fd45a2711.js"
+  │  integrity="sha256-9Luu8s+h+/07NgnawUxjiKf6YHoSC234ORl
+  │ +8VfcNQA= sha512-ZwcqiOYoz+oLey3AL8JQT9J41y8LfqAzbG6AC
+  │ iWOrVVmQAH+VhQX7c8PEZhmJewy7f4q3E+9BIKLOy4XgLuw6Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.659eeb3647b0851a1edb.js
+  │ " integrity="sha256-u0+j6DkAO6s3n3b7lZfINRDEc4YiHLStB6
+  │ vr3kIuGxw= sha512-hvJF9duocC19ROq44t9tWCly2KQWbKYE9agc
+  │ xg3vYqqZR20Twul8wHes2w8WXB5lRvR8QDm5CK3J8JqoxfVnKQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-96043de95c0
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       546µs   (cache)      (cache)         1ms              1ms        58µs      4ms   
+
+  ✓  Status code is 200
+ 15. Services list is valid
+ 16. Service objects have required properties
+
+↳ 2008 - Dashboard Unauthorized Access
+  ┌
+  │ 'No auth token found. Please run authentication tests 
+  │ first.'
+  └
+  GET http://192.168.1.1/api/v1/dashboard/summary  
+  200 OK ★ 5ms time ★ 247B↑ 2.57kB↓ size ★ 7↑ 7↓ headers ★ 0 cookies
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v3.1.0%2B96edebbf%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.118abea18a8fd45a2711.js"
+  │  integrity="sha256-9Luu8s+h+/07NgnawUxjiKf6YHoSC234ORl
+  │ +8VfcNQA= sha512-ZwcqiOYoz+oLey3AL8JQT9J41y8LfqAzbG6AC
+  │ iWOrVVmQAH+VhQX7c8PEZhmJewy7f4q3E+9BIKLOy4XgLuw6Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.659eeb3647b0851a1edb.js
+  │ " integrity="sha256-u0+j6DkAO6s3n3b7lZfINRDEc4YiHLStB6
+  │ vr3kIuGxw= sha512-hvJF9duocC19ROq44t9tWCly2KQWbKYE9agc
+  │ xg3vYqqZR20Twul8wHes2w8WXB5lRvR8QDm5CK3J8JqoxfVnKQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-96043de95c0
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       625µs   (cache)      (cache)         1ms              1ms        147µs     6ms   
+
+ 17. Status code is 401
+ 18. Error message for unauthorized access
+
+❏ Dashboard Widgets
+↳ 2101 - Get Widget Configuration
+  ┌
+  │ 'No auth token found. Please run authentication tests 
+  │ first.'
+  └
+  GET http://192.168.1.1/api/v1/dashboard/widgets/config  
+  200 OK ★ 4ms time ★ 254B↑ 2.57kB↓ size ★ 7↑ 7↓ headers ★ 0 cookies
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v3.1.0%2B96edebbf%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.118abea18a8fd45a2711.js"
+  │  integrity="sha256-9Luu8s+h+/07NgnawUxjiKf6YHoSC234ORl
+  │ +8VfcNQA= sha512-ZwcqiOYoz+oLey3AL8JQT9J41y8LfqAzbG6AC
+  │ iWOrVVmQAH+VhQX7c8PEZhmJewy7f4q3E+9BIKLOy4XgLuw6Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.659eeb3647b0851a1edb.js
+  │ " integrity="sha256-u0+j6DkAO6s3n3b7lZfINRDEc4YiHLStB6
+  │ vr3kIuGxw= sha512-hvJF9duocC19ROq44t9tWCly2KQWbKYE9agc
+  │ xg3vYqqZR20Twul8wHes2w8WXB5lRvR8QDm5CK3J8JqoxfVnKQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-96043de95c0
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  968µs     393µs   (cache)      (cache)         2ms              1ms        66µs      4ms   
+
+  ✓  Status code is 200
+ 19. Widget configuration returned
+ 20. Widget structure is valid
+
+↳ 2102 - Update Widget Configuration
+  ┌
+  │ 'No auth token found. Please run authentication tests 
+  │ first.'
+  └
+  PUT http://192.168.1.1/api/v1/dashboard/widgets/config  
+  501 Not Implemented ★ 5ms time ★ 742B↑ 329B↓ size ★ 9↑ 5↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 435B
+  │ {
+  │     "widgets": [
+  │         {
+  │             "id": "cpu_widget",
+  │             "type": "gauge",
+  │             "position": { "x": 0, "y": 0 },
+  │             "size": { "width": 4, "height": 3 },
+  │             "enabled": true
+  │         },
+  │         {
+  │             "id": "network_widget",
+  │             "type": "graph",
+  │             "position": { "x": 4, "y": 0 },
+  │             "size": { "width": 8, "height": 3 },
+  │             "enabled": true
+  │         }
+  │     ]
+  │ }
+  └ 
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 170B
+  │ <!DOCTYPE html>
+  │ <html lang="en">
+  │  <head>
+  │   <meta charset="UTF-8" />
+  │   <title>501 Not Implemented</title>
+  │  </head>
+  │  <body>
+  │   <h1>501 Not Implemented</h1>
+  │  </body>
+  │ </html>
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       912µs   (cache)      (cache)         2ms              1ms        75µs      5ms   
+
+ 21. Status code is 200
+ 22. Configuration updated successfully
+
+↳ 2103 - Get Widget Data
+  ┌
+  │ 'No auth token found. Please run authentication tests 
+  │ first.'
+  └
+  GET http://192.168.1.1/api/v1/dashboard/widgets/cpu_widget/data  
+  200 OK ★ 6ms time ★ 263B↑ 2.57kB↓ size ★ 7↑ 7↓ headers ★ 0 cookies
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v3.1.0%2B96edebbf%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.118abea18a8fd45a2711.js"
+  │  integrity="sha256-9Luu8s+h+/07NgnawUxjiKf6YHoSC234ORl
+  │ +8VfcNQA= sha512-ZwcqiOYoz+oLey3AL8JQT9J41y8LfqAzbG6AC
+  │ iWOrVVmQAH+VhQX7c8PEZhmJewy7f4q3E+9BIKLOy4XgLuw6Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.659eeb3647b0851a1edb.js
+  │ " integrity="sha256-u0+j6DkAO6s3n3b7lZfINRDEc4YiHLStB6
+  │ vr3kIuGxw= sha512-hvJF9duocC19ROq44t9tWCly2KQWbKYE9agc
+  │ xg3vYqqZR20Twul8wHes2w8WXB5lRvR8QDm5CK3J8JqoxfVnKQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-96043de95c0
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait   dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  929µs     1ms    (cache)      769µs           1ms              1ms        190µs     6ms   
+
+  ✓  Status code is 200
+ 23. Widget data returned
+
+↳ 2104 - Invalid Widget Request
+  ┌
+  │ 'No auth token found. Please run authentication tests 
+  │ first.'
+  └
+  GET http://192.168.1.1/api/v1/dashboard/widgets/non_existent_widget/data  
+  200 OK ★ 4ms time ★ 272B↑ 2.57kB↓ size ★ 7↑ 7↓ headers ★ 0 cookies
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v3.1.0%2B96edebbf%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.118abea18a8fd45a2711.js"
+  │  integrity="sha256-9Luu8s+h+/07NgnawUxjiKf6YHoSC234ORl
+  │ +8VfcNQA= sha512-ZwcqiOYoz+oLey3AL8JQT9J41y8LfqAzbG6AC
+  │ iWOrVVmQAH+VhQX7c8PEZhmJewy7f4q3E+9BIKLOy4XgLuw6Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.659eeb3647b0851a1edb.js
+  │ " integrity="sha256-u0+j6DkAO6s3n3b7lZfINRDEc4YiHLStB6
+  │ vr3kIuGxw= sha512-hvJF9duocC19ROq44t9tWCly2KQWbKYE9agc
+  │ xg3vYqqZR20Twul8wHes2w8WXB5lRvR8QDm5CK3J8JqoxfVnKQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-96043de95c0
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  757µs     540µs   (cache)      (cache)         2ms              1ms        122µs     4ms   
+
+ 24. Status code is 404
+ 25. Error for non-existent widget
+
+❏ Performance Tests
+↳ 2201 - Dashboard Load Test
+  ┌
+  │ 'No auth token found. Please run authentication tests 
+  │ first.'
+  └
+  GET http://192.168.1.1/api/v1/dashboard/summary  
+  200 OK ★ 4ms time ★ 247B↑ 2.57kB↓ size ★ 7↑ 7↓ headers ★ 0 cookies
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v3.1.0%2B96edebbf%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.118abea18a8fd45a2711.js"
+  │  integrity="sha256-9Luu8s+h+/07NgnawUxjiKf6YHoSC234ORl
+  │ +8VfcNQA= sha512-ZwcqiOYoz+oLey3AL8JQT9J41y8LfqAzbG6AC
+  │ iWOrVVmQAH+VhQX7c8PEZhmJewy7f4q3E+9BIKLOy4XgLuw6Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.659eeb3647b0851a1edb.js
+  │ " integrity="sha256-u0+j6DkAO6s3n3b7lZfINRDEc4YiHLStB6
+  │ vr3kIuGxw= sha512-hvJF9duocC19ROq44t9tWCly2KQWbKYE9agc
+  │ xg3vYqqZR20Twul8wHes2w8WXB5lRvR8QDm5CK3J8JqoxfVnKQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-96043de95c0
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  949µs     556µs   (cache)      (cache)         1ms              1ms        81µs      4ms   
+
+  ✓  Dashboard loads within 2 seconds
+ 26. All critical data present
+
+↳ 2202 - Concurrent Widget Requests
+  ┌
+  │ 'No auth token found. Please run authentication tests 
+  │ first.'
+  └
+  GET http://192.168.1.1/api/v1/dashboard/metrics/realtime  
+  200 OK ★ 4ms time ★ 256B↑ 2.57kB↓ size ★ 7↑ 7↓ headers ★ 0 cookies
+  ┌ ↓ text/html ★ text ★ html ★ utf8 ★ 2.36kB
+  │ <!DOCTYPE html>
+  │ <html>
+  │   <head>
+  │     <meta charset="utf-8">
+  │     <meta http-equiv="X-UA-Compatible" content="IE=edg
+  │ e">
+  │     <title>PrplWebui</title>
+  │     <meta name="description" content="">
+  │     <meta name="viewport" content="width=device-width,
+  │  initial-scale=1">
+  │     
+  │ <meta name="prpl-webui/config/environment" content="%7
+  │ B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environmen
+  │ t%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C
+  │ %22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B
+  │ %22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7
+  │ B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAP
+  │ PER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue
+  │ %2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ON
+  │ LY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%2
+  │ 2name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplo
+  │ s-v3.1.0%2B96edebbf%22%7D%2C%22ember-simple-auth%22%3A
+  │ %7B%22routeAfterAuthentication%22%3A%22authenticated.d
+  │ ashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingP
+  │ roxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%
+  │ 7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+  │     <link integrity="" rel="stylesheet" href="/assets/
+  │ prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+  │     
+  │   </head>
+  │   <body>
+  │     
+  │     <script src="/assets/vendor-7b4b8e14de6f0af6439f2a
+  │ 33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84Aj
+  │ NK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPh
+  │ XOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd3
+  │ 1vAckUHzA==" ></script>
+  │ <script src="/assets/chunk.48.118abea18a8fd45a2711.js"
+  │  integrity="sha256-9Luu8s+h+/07NgnawUxjiKf6YHoSC234ORl
+  │ +8VfcNQA= sha512-ZwcqiOYoz+oLey3AL8JQT9J41y8LfqAzbG6AC
+  │ iWOrVVmQAH+VhQX7c8PEZhmJewy7f4q3E+9BIKLOy4XgLuw6Q==" >
+  │ </script>
+  │ <script src="/assets/chunk.143.659eeb3647b0851a1edb.js
+  │ " integrity="sha256-u0+j6DkAO6s3n3b7lZfINRDEc4YiHLStB6
+  │ vr3kIuGxw= sha512-hvJF9duocC19ROq44t9tWCly2KQWbKYE9agc
+  │ xg3vYqqZR20Twul8wHes2w8WXB5lRvR8QDm5CK3J8JqoxfVnKQ==" 
+  │ ></script>
+  │     <script src="/assets/prpl-webui-96043de95c0
+  │ (showing 2.05kB/2.36kB)
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  902µs     600µs   (cache)      (cache)         1ms              930µs      52µs      4ms   
+
+  ✓  Widget responds quickly under load
+ 27. Data integrity maintained
+
+┌─────────────────────────┬───────────────────┬──────────────────┐
+│                         │          executed │           failed │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              iterations │                 1 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│                requests │                14 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│            test-scripts │                14 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│      prerequest-scripts │                14 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              assertions │                39 │               27 │
+├─────────────────────────┴───────────────────┴──────────────────┤
+│ total run duration: 1936ms                                     │
+├────────────────────────────────────────────────────────────────┤
+│ total data received: 30.81kB (approx)                          │
+├────────────────────────────────────────────────────────────────┤
+│ average response time: 5ms [min: 4ms, max: 15ms, s.d.: 2ms]    │
+├────────────────────────────────────────────────────────────────┤
+│ average first byte time: 2ms [min: 1ms, max: 2ms, s.d.: 307µs] │
+└────────────────────────────────────────────────────────────────┘
+
+[31m   # [39m[31m failure        [39m[31m detail                                                             [39m
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 01.  JSONError       Dashboard has system status                                        
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:2 in test-script                                      
+                      inside "Dashboard Overview / 2001 - Get Dashboard Summary"         
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 02.  JSONError       Dashboard has device info                                          
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:3 in test-script                                      
+                      inside "Dashboard Overview / 2001 - Get Dashboard Summary"         
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 03.  JSONError       Dashboard has network summary                                      
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:4 in test-script                                      
+                      inside "Dashboard Overview / 2001 - Get Dashboard Summary"         
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 04.  JSONError       Health status is valid                                             
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:1 in test-script                                      
+                      inside "Dashboard Overview / 2002 - Get System Health"             
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 05.  JSONError       Component health details present                                   
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:2 in test-script                                      
+                      inside "Dashboard Overview / 2002 - Get System Health"             
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 06.  JSONError       Metrics contain timestamp                                          
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:1 in test-script                                      
+                      inside "Dashboard Overview / 2003 - Get Real-time Metrics"         
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 07.  JSONError       CPU metrics are valid                                              
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:2 in test-script                                      
+                      inside "Dashboard Overview / 2003 - Get Real-time Metrics"         
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 08.  JSONError       Memory metrics are valid                                           
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:3 in test-script                                      
+                      inside "Dashboard Overview / 2003 - Get Real-time Metrics"         
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 09.  JSONError       Historical data is array                                           
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:1 in test-script                                      
+                      inside "Dashboard Overview / 2004 - Get Historical Metrics"        
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 10.  JSONError       Data points have required fields                                   
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:2 in test-script                                      
+                      inside "Dashboard Overview / 2004 - Get Historical Metrics"        
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 11.  JSONError       Alerts structure is valid                                          
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:1 in test-script                                      
+                      inside "Dashboard Overview / 2005 - Get Active Alerts"             
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 12.  JSONError       Alert objects have required fields                                 
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:2 in test-script                                      
+                      inside "Dashboard Overview / 2005 - Get Active Alerts"             
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 13.  JSONError       Network interfaces listed                                          
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:1 in test-script                                      
+                      inside "Dashboard Overview / 2006 - Get Network Status Overview"   
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 14.  JSONError       Interface data is valid                                            
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:2 in test-script                                      
+                      inside "Dashboard Overview / 2006 - Get Network Status Overview"   
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 15.  JSONError       Services list is valid                                             
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:1 in test-script                                      
+                      inside "Dashboard Overview / 2007 - Get Service Status"            
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 16.  JSONError       Service objects have required properties                           
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:2 in test-script                                      
+                      inside "Dashboard Overview / 2007 - Get Service Status"            
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 17.  AssertionError  Status code is 401                                                 
+                      expected response to have status code 401 but got 200              
+                      at assertion:0 in test-script                                      
+                      inside "Dashboard Overview / 2008 - Dashboard Unauthorized Access" 
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 18.  JSONError       Error message for unauthorized access                              
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:1 in test-script                                      
+                      inside "Dashboard Overview / 2008 - Dashboard Unauthorized Access" 
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 19.  JSONError       Widget configuration returned                                      
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:1 in test-script                                      
+                      inside "Dashboard Widgets / 2101 - Get Widget Configuration"       
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 20.  JSONError       Widget structure is valid                                          
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:2 in test-script                                      
+                      inside "Dashboard Widgets / 2101 - Get Widget Configuration"       
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 21.  AssertionError  Status code is 200                                                 
+                      expected response to have status code 200 but got 501              
+                      at assertion:0 in test-script                                      
+                      inside "Dashboard Widgets / 2102 - Update Widget Configuration"    
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 22.  JSONError       Configuration updated successfully                                 
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:1 in test-script                                      
+                      inside "Dashboard Widgets / 2102 - Update Widget Configuration"    
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 23.  JSONError       Widget data returned                                               
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:1 in test-script                                      
+                      inside "Dashboard Widgets / 2103 - Get Widget Data"                
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 24.  AssertionError  Status code is 404                                                 
+                      expected response to have status code 404 but got 200              
+                      at assertion:0 in test-script                                      
+                      inside "Dashboard Widgets / 2104 - Invalid Widget Request"         
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 25.  JSONError       Error for non-existent widget                                      
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:1 in test-script                                      
+                      inside "Dashboard Widgets / 2104 - Invalid Widget Request"         
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 26.  JSONError       All critical data present                                          
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:1 in test-script                                      
+                      inside "Performance Tests / 2201 - Dashboard Load Test"            
+[90m     [39m[90m                [39m[90m                                                                    [39m
+ 27.  JSONError       Data integrity maintained                                          
+                      Unexpected token '<' at 1:1                                        
+                      <!DOCTYPE html>                                                    
+                      ^                                                                  
+                      at assertion:1 in test-script                                      
+                      inside "Performance Tests / 2202 - Concurrent Widget Requests"     

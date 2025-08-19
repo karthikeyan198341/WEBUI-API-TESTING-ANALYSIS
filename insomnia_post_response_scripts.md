@@ -581,347 +581,266 @@ console.log("=".repeat(50));
 These scripts will give you comprehensive feedback on every API call, extracting meaningful data and providing clear guidance on any issues!
 
 
-Based on my research and typical patterns in prplOS and Ambiorix framework, here's a comprehensive guide for zone-based logging in the tr181-httpprocess package:
+I'll help you trace the function flow for a TR-069/CWMP implementation, specifically for the DeviceInfo.ModelName parameter. Here's a comprehensive guide on how to manually trace the end-to-end flow:
 
-## Zone-Based Logging Command Reference Guide for tr181-httpprocess
+## 1. **Understanding the Architecture First**
 
-### Overview
-Zone-based logging in prplOS tr181-httpprocess allows granular control over log output by categorizing logs into different functional zones. Each zone can be independently enabled/disabled for targeted debugging.
+Before tracing, understand the typical TR-069 architecture:
+- **ACS (Auto Configuration Server)** sends requests
+- **CPE (Customer Premises Equipment)** receives and processes requests
+- **Data Model (DM)** layer handles parameter get/set operations
+- **Backend modules** (.c files) implement actual parameter handlers
 
-### 1. **Environment Variable Configuration**
-
-Set up zone-based logging using environment variables:
-
-```bash
-# Enable all zones
-export AMXRT_LOG_ZONES="all"
-
-# Enable specific zones
-export AMXRT_LOG_ZONES="session,dm,dm_userintf,config,main"
-
-# Set logging level
-export AMXRT_LOG_LEVEL="DEBUG"
-export AMXRT_LOG_FACILITY="local0"
-```
-
-### 2. **Zone-Specific Configuration Commands**
-
-#### **Session Zone Logging**
-```bash
-# Enable session zone logging
-amxrt_set_log_zone session enable
-amxrt_set_log_zone session debug
-
-# Using environment variable
-export AMXRT_LOG_ZONE_SESSION=1
-export AMXRT_LOG_ZONE_SESSION_LEVEL=DEBUG
-
-# Runtime configuration
-echo "session:debug" > /proc/ambiorix/log_zones
-```
-
-#### **DM (Data Model) Zone Logging**
-```bash
-# Enable DM zone logging
-amxrt_set_log_zone dm enable
-amxrt_set_log_zone dm debug
-
-# Using environment variable
-export AMXRT_LOG_ZONE_DM=1
-export AMXRT_LOG_ZONE_DM_LEVEL=DEBUG
-
-# Runtime configuration
-echo "dm:debug" > /proc/ambiorix/log_zones
-```
-
-#### **DM_UserIntf Zone Logging**
-```bash
-# Enable DM user interface zone logging
-amxrt_set_log_zone dm_userintf enable
-amxrt_set_log_zone dm_userintf debug
-
-# Using environment variable
-export AMXRT_LOG_ZONE_DM_USERINTF=1
-export AMXRT_LOG_ZONE_DM_USERINTF_LEVEL=DEBUG
-
-# Runtime configuration
-echo "dm_userintf:debug" > /proc/ambiorix/log_zones
-```
-
-#### **Config Zone Logging**
-```bash
-# Enable configuration zone logging
-amxrt_set_log_zone config enable
-amxrt_set_log_zone config debug
-
-# Using environment variable
-export AMXRT_LOG_ZONE_CONFIG=1
-export AMXRT_LOG_ZONE_CONFIG_LEVEL=DEBUG
-
-# Runtime configuration
-echo "config:debug" > /proc/ambiorix/log_zones
-```
-
-#### **Main Zone Logging**
-```bash
-# Enable main zone logging
-amxrt_set_log_zone main enable
-amxrt_set_log_zone main debug
-
-# Using environment variable
-export AMXRT_LOG_ZONE_MAIN=1
-export AMXRT_LOG_ZONE_MAIN_LEVEL=DEBUG
-
-# Runtime configuration
-echo "main:debug" > /proc/ambiorix/log_zones
-```
-
-### 3. **Configuration File Method**
-
-Create or modify `/etc/ambiorix/tr181-httpprocess.conf`:
-
-```ini
-[logging]
-enabled = true
-level = DEBUG
-facility = local0
-
-[log_zones]
-session = DEBUG
-dm = DEBUG
-dm_userintf = DEBUG
-config = DEBUG
-main = DEBUG
-
-[zone_session]
-enabled = true
-level = DEBUG
-output = /var/log/tr181/session.log
-
-[zone_dm]
-enabled = true
-level = DEBUG
-output = /var/log/tr181/dm.log
-
-[zone_dm_userintf]
-enabled = true
-level = DEBUG
-output = /var/log/tr181/dm_userintf.log
-
-[zone_config]
-enabled = true
-level = DEBUG
-output = /var/log/tr181/config.log
-
-[zone_main]
-enabled = true
-level = DEBUG
-output = /var/log/tr181/main.log
-```
-
-### 4. **Runtime Control Using UCI (if available)**
+## 2. **Tools for Manual Tracing**
 
 ```bash
-# Enable zones using UCI
-uci set tr181_httpprocess.logging.zones="session,dm,dm_userintf,config,main"
-uci set tr181_httpprocess.logging.level="DEBUG"
-
-# Zone-specific settings
-uci set tr181_httpprocess.zone_session.enabled=1
-uci set tr181_httpprocess.zone_session.level="DEBUG"
-
-uci set tr181_httpprocess.zone_dm.enabled=1
-uci set tr181_httpprocess.zone_dm.level="DEBUG"
-
-uci set tr181_httpprocess.zone_dm_userintf.enabled=1
-uci set tr181_httpprocess.zone_dm_userintf.level="DEBUG"
-
-uci set tr181_httpprocess.zone_config.enabled=1
-uci set tr181_httpprocess.zone_config.level="DEBUG"
-
-uci set tr181_httpprocess.zone_main.enabled=1
-uci set tr181_httpprocess.zone_main.level="DEBUG"
-
-# Apply changes
-uci commit
-/etc/init.d/tr181-httpprocess restart
+# Key tools for tracing:
+grep -r "DeviceInfo" .              # Find all DeviceInfo references
+grep -r "ModelName" .                # Find ModelName references
+find . -name "*.c" -o -name "*.h"   # List all C source/header files
+ctags -R .                           # Generate tags for navigation
+cscope -R                            # Build cscope database
 ```
 
-### 5. **Dynamic Runtime Control**
+## 3. **Example Flow for DeviceInfo.ModelName**
+
+Here's a typical end-to-end flow:
+
+### **Step 1: Endpoint Request (HTTP/SOAP)**
+```xml
+<!-- Incoming GetParameterValues request -->
+<soap:Envelope>
+  <soap:Body>
+    <cwmp:GetParameterValues>
+      <ParameterNames>
+        <string>Device.DeviceInfo.ModelName</string>
+      </ParameterNames>
+    </cwmp:GetParameterValues>
+  </soap:Body>
+</soap:Envelope>
+```
+
+### **Step 2: Request Parser**
+Look for files handling SOAP parsing:
+```c
+// Typically in files like: cwmp_handler.c, soap_parser.c
+void handle_get_parameter_values(soap_request *req) {
+    // Parse parameter names
+    char *param_name = parse_parameter_name(req);  // "Device.DeviceInfo.ModelName"
+    
+    // Route to parameter handler
+    dm_result = dm_get_parameter(param_name);
+}
+```
+
+### **Step 3: Data Model Router**
+Find the DM routing logic:
+```c
+// Usually in: dm_handler.c, parameter_manager.c
+dm_value* dm_get_parameter(char *param_path) {
+    // Parse the path: Device.DeviceInfo.ModelName
+    object_path = parse_object_path(param_path);  // "Device.DeviceInfo"
+    param_name = parse_param_name(param_path);    // "ModelName"
+    
+    // Find handler for this object
+    handler = find_object_handler(object_path);
+    return handler->get_param(param_name);
+}
+```
+
+### **Step 4: Object Handler Registration**
+Look for registration tables:
+```c
+// In files like: device_info.c, dm_objects.c
+static dm_object_handler device_info_handler = {
+    .object_path = "Device.DeviceInfo",
+    .get_param = device_info_get_param,
+    .set_param = device_info_set_param,
+    .parameters = {
+        {"ModelName", get_model_name, NULL, DM_STRING},
+        {"Manufacturer", get_manufacturer, NULL, DM_STRING},
+        // ... other parameters
+    }
+};
+```
+
+### **Step 5: Actual Parameter Implementation**
+Find the implementation:
+```c
+// In device_info.c or similar
+char* get_model_name(void) {
+    static char model_name[64];
+    
+    // Method 1: Read from system file
+    FILE *fp = fopen("/etc/device_model", "r");
+    if (fp) {
+        fgets(model_name, sizeof(model_name), fp);
+        fclose(fp);
+    }
+    
+    // Method 2: Read from hardware info
+    // get_hardware_info(model_name, sizeof(model_name));
+    
+    // Method 3: Hardcoded or from config
+    // strcpy(model_name, DEVICE_MODEL_NAME);
+    
+    return model_name;
+}
+```
+
+### **Step 6: Response Building**
+```c
+// In response_builder.c or cwmp_response.c
+soap_response* build_get_parameter_response(dm_results *results) {
+    soap_response *resp = create_soap_response();
+    
+    // Add parameter values to response
+    for (each result) {
+        add_parameter_value(resp, 
+            "Device.DeviceInfo.ModelName", 
+            "RouterModel-X100",  // The actual value
+            "xsd:string");
+    }
+    
+    return resp;
+}
+```
+
+### **Step 7: HTTP Response**
+```xml
+<!-- Outgoing response -->
+HTTP/1.1 200 OK
+Content-Type: text/xml; charset=utf-8
+
+<soap:Envelope>
+  <soap:Body>
+    <cwmp:GetParameterValuesResponse>
+      <ParameterList>
+        <ParameterValueStruct>
+          <Name>Device.DeviceInfo.ModelName</Name>
+          <Value xsi:type="xsd:string">RouterModel-X100</Value>
+        </ParameterValueStruct>
+      </ParameterList>
+    </cwmp:GetParameterValuesResponse>
+  </soap:Body>
+</soap:Envelope>
+```
+
+## 4. **Manual Tracing Steps**
+
+### **A. Start from Entry Point:**
+```bash
+# Find main entry points
+grep -r "main(" *.c
+grep -r "handle_request\|process_request" *.c
+grep -r "soap.*parse\|parse.*soap" *.c
+```
+
+### **B. Trace Parameter Path:**
+```bash
+# Find where DeviceInfo is handled
+grep -r "DeviceInfo" --include="*.c"
+grep -r "\"ModelName\"" --include="*.c"
+grep -r "Device\.DeviceInfo" --include="*.c"
+```
+
+### **C. Find Registration Points:**
+```bash
+# Look for object/parameter registration
+grep -r "register.*object\|object.*register" *.c
+grep -r "parameter.*table\|param.*list" *.c
+grep -r "handler.*table" *.c
+```
+
+### **D. Locate Implementation:**
+```bash
+# Find actual implementation
+grep -r "get.*model.*name\|model.*name.*get" *.c
+grep -r "MODEL_NAME\|model_name" *.h
+```
+
+## 5. **Creating a Function Call Graph**
+
+Create a visual flow diagram:
+
+```
+[HTTP Request] 
+    ↓
+[cwmp_main.c: handle_http_request()]
+    ↓
+[soap_parser.c: parse_soap_envelope()]
+    ↓
+[cwmp_handler.c: process_cwmp_message()]
+    ↓
+[cwmp_handler.c: handle_get_parameter_values()]
+    ↓
+[dm_manager.c: dm_get_parameter("Device.DeviceInfo.ModelName")]
+    ↓
+[dm_router.c: route_to_handler()]
+    ↓
+[device_info.c: device_info_get_param("ModelName")]
+    ↓
+[device_info.c: get_model_name()]
+    ↓
+[response_builder.c: build_parameter_response()]
+    ↓
+[http_response.c: send_http_response(200, soap_body)]
+```
+
+## 6. **Debug Tracing Techniques**
+
+Add debug prints to trace the actual flow:
+
+```c
+// Add these to trace execution
+#define TRACE_FLOW(func) printf("[FLOW] %s:%d - %s()\n", __FILE__, __LINE__, func)
+
+// In each function:
+void device_info_get_param(char *param) {
+    TRACE_FLOW(__FUNCTION__);
+    printf("  Getting parameter: %s\n", param);
+    // ... rest of code
+}
+```
+
+## 7. **Common File Patterns to Look For**
 
 ```bash
-# Using control socket (if available)
-amxrt_cli -s /var/run/tr181-httpprocess.sock <<EOF
-logging zone session enable
-logging zone dm enable
-logging zone dm_userintf enable
-logging zone config enable
-logging zone main enable
-logging level DEBUG
-EOF
-
-# Using signals for dynamic control
-# Enable debug logging
-kill -USR1 $(pidof tr181-httpprocess)
-
-# Disable debug logging
-kill -USR2 $(pidof tr181-httpprocess)
+# Key files in typical TR-069 implementations:
+*cwmp*.c         # CWMP protocol handlers
+*soap*.c         # SOAP message processing
+*dm*.c           # Data model handlers
+*parameter*.c    # Parameter management
+*device_info*.c  # DeviceInfo object implementation
+*handler*.c      # Request handlers
+*router*.c       # Request routing
 ```
 
-### 6. **Systemd Service Configuration**
+## 8. **Quick Tracing Script**
 
-If tr181-httpprocess runs as a systemd service:
+Create a script to help trace:
 
 ```bash
-# Create override configuration
-systemctl edit tr181-httpprocess
+#!/bin/bash
+# trace_flow.sh
 
-# Add environment variables
-[Service]
-Environment="AMXRT_LOG_ZONES=session,dm,dm_userintf,config,main"
-Environment="AMXRT_LOG_LEVEL=DEBUG"
-Environment="AMXRT_LOG_ZONE_SESSION=1"
-Environment="AMXRT_LOG_ZONE_DM=1"
-Environment="AMXRT_LOG_ZONE_DM_USERINTF=1"
-Environment="AMXRT_LOG_ZONE_CONFIG=1"
-Environment="AMXRT_LOG_ZONE_MAIN=1"
+PARAM="Device.DeviceInfo.ModelName"
+echo "Tracing flow for: $PARAM"
 
-# Reload and restart
-systemctl daemon-reload
-systemctl restart tr181-httpprocess
+echo -e "\n1. Entry points:"
+grep -l "main\|handle_request" *.c
+
+echo -e "\n2. SOAP/CWMP handlers:"
+grep -l "GetParameterValues" *.c
+
+echo -e "\n3. Parameter routing:"
+grep -l "DeviceInfo" *.c | xargs grep -l "ModelName"
+
+echo -e "\n4. Implementation files:"
+grep -l "model_name\|MODEL_NAME" *.c
+
+echo -e "\n5. Function calls containing 'DeviceInfo':"
+grep -n "DeviceInfo" *.c | grep "("
 ```
 
-### 7. **Monitoring Zone Logs**
-
-```bash
-# Monitor all zones
-tail -f /var/log/tr181/*.log
-
-# Monitor specific zone
-tail -f /var/log/tr181/session.log
-
-# Using journalctl (if systemd)
-journalctl -u tr181-httpprocess -f | grep -E "ZONE:(session|dm|config)"
-
-# Filter by zone
-grep "ZONE:session" /var/log/syslog
-grep "ZONE:dm" /var/log/syslog
-grep "ZONE:dm_userintf" /var/log/syslog
-grep "ZONE:config" /var/log/syslog
-grep "ZONE:main" /var/log/syslog
-```
-
-### 8. **Verification Commands**
-
-```bash
-# Check current zone status
-cat /proc/ambiorix/log_zones
-
-# Query current configuration
-amxrt_cli -c "show logging zones"
-
-# Check environment variables
-env | grep AMXRT_LOG
-
-# Verify log output
-logger -t tr181-test -p local0.debug "Test message"
-tail -n 10 /var/log/syslog | grep tr181
-```
-
-### 9. **Log Level Reference**
-
-```bash
-# Available log levels for each zone
-FATAL   = 0  # System unusable
-ERROR   = 1  # Error conditions
-WARNING = 2  # Warning conditions
-INFO    = 3  # Informational messages
-DEBUG   = 4  # Debug-level messages
-TRACE   = 5  # Detailed trace messages
-```
-
-### 10. **Complete Enable Script**
-
-Create a script `/usr/local/bin/enable-tr181-zones.sh`:
-
-```bash
-#!/bin/sh
-
-# Enable all tr181-httpprocess logging zones
-
-# Set environment variables
-export AMXRT_LOG_ZONES="session,dm,dm_userintf,config,main"
-export AMXRT_LOG_LEVEL="DEBUG"
-export AMXRT_LOG_FACILITY="local0"
-
-# Enable individual zones
-export AMXRT_LOG_ZONE_SESSION=1
-export AMXRT_LOG_ZONE_DM=1
-export AMXRT_LOG_ZONE_DM_USERINTF=1
-export AMXRT_LOG_ZONE_CONFIG=1
-export AMXRT_LOG_ZONE_MAIN=1
-
-# Create log directory
-mkdir -p /var/log/tr181
-
-# Configure syslog
-cat > /etc/rsyslog.d/60-tr181.conf << EOF
-# TR181 HTTP Process Zone Logging
-local0.*    /var/log/tr181/all.log
-
-# Zone-specific logging
-:msg, contains, "ZONE:session"     /var/log/tr181/session.log
-:msg, contains, "ZONE:dm"          /var/log/tr181/dm.log
-:msg, contains, "ZONE:dm_userintf" /var/log/tr181/dm_userintf.log
-:msg, contains, "ZONE:config"      /var/log/tr181/config.log
-:msg, contains, "ZONE:main"        /var/log/tr181/main.log
-
-& stop
-EOF
-
-# Restart services
-systemctl restart rsyslog
-systemctl restart tr181-httpprocess
-
-echo "TR181 zone logging enabled. Check /var/log/tr181/"
-```
-
-### 11. **Troubleshooting Tips**
-
-```bash
-# Check if tr181-httpprocess is running
-ps aux | grep tr181-httpprocess
-
-# Check process environment
-cat /proc/$(pidof tr181-httpprocess)/environ | tr '\0' '\n' | grep LOG
-
-# Verify library support
-strings /usr/lib/libamxrt.so | grep -i zone
-
-# Check configuration files
-find /etc -name "*tr181*" -o -name "*ambiorix*" 2>/dev/null
-
-# Test zone logging
-echo "test:session:debug:Test session message" > /dev/log
-echo "test:dm:debug:Test DM message" > /dev/log
-```
-
-### Important Notes:
-
-1. **Version Dependency**: The exact commands may vary based on your tr181-httpprocess version
-2. **Persistence**: Environment variables need to be set in service files for persistence across reboots
-3. **Performance Impact**: Enabling all zones with DEBUG level can impact performance
-4. **Log Rotation**: Configure log rotation to prevent disk space issues
-5. **Security**: Ensure log files don't contain sensitive information
-
-### Quick Enable All Zones:
-
-```bash
-# One-liner to enable all zones
-export AMXRT_LOG_ZONES="session,dm,dm_userintf,config,main" && \
-export AMXRT_LOG_LEVEL=DEBUG && \
-systemctl restart tr181-httpprocess && \
-tail -f /var/log/syslog | grep -E "session|dm|config|main"
-```
-
-This comprehensive guide should help you enable and manage zone-based logging for the tr181-httpprocess package in prplOS. The exact implementation may vary slightly based on your specific version and configuration.
+This comprehensive guide should help you trace the complete flow from endpoint request to response. Start with the entry point and follow the function calls step by step, using grep and other tools to locate each component in the chain.

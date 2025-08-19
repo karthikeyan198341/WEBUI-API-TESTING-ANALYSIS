@@ -861,3 +861,278 @@ newman run prplos_login_collection.json \
 - 🤖 **Automated Newman scripts**
 - 📋 **Multiple report formats** (JSON, HTML, JUnit)
 - ⚡ **Ready-to-run collections**
+
+
+
+
+I'll provide you with a detailed file-by-file flow analysis of the prpl-webui component, showing exactly how to track the call flow through the EmberJS application. Let me fetch the repository structure first.Perfect! I've created a comprehensive guide that shows you **exactly** how to track the file flow in the prpl-webui EmberJS application. Here's what the guide covers:
+
+## Key Highlights for Tracking the Flow:
+
+### 1. **File Organization Structure**
+The prpl-webui follows the standard EmberJS directory structure with these key folders:
+- **`adapters/`** - Handles HOW to communicate with the API
+- **`serializers/`** - Handles DATA FORMAT conversion  
+- **`models/`** - Defines data structures
+- **`routes/`** - Handles URL navigation and initial data loading
+- **`controllers/`** - Handles user interactions
+- **`templates/`** - Contains the UI (HTML)
+
+### 2. **Complete Flow Example: WiFi Settings Update**
+
+I've traced the complete flow showing exactly which file is involved at each step:
+
+1. **User sees UI** → `app/templates/wifi/settings.hbs`
+2. **User clicks button** → `app/controllers/wifi/settings.js` 
+3. **Data structure** → `app/models/wifi.js`
+4. **HTTP request prep** → `app/adapters/application.js`
+5. **Data formatting** → `app/serializers/application.js`
+6. **Actual API call** → Network request to `/serviceElements/Device.WiFi.SSID.1`
+
+### 3. **How to Debug and Track**
+
+The guide shows you three methods to track the flow:
+- **Console logging** - Add `console.log()` statements at each step
+- **Browser Network Tab** - See actual HTTP requests
+- **Ember Inspector** - Browser extension to visualize the flow
+
+### 4. **TR-181 Specific Mappings**
+
+Shows how EmberJS models map to TR-181 paths:
+```
+EmberJS: store.findRecord('wifi', '1')
+TR-181:  GET /serviceElements/Device.WiFi.SSID.1
+```
+
+### 5. **Quick Tips for Beginners**
+
+- Start with `.hbs` template files to understand the UI
+- Look for `{{on "click"}}` to find user interactions
+- Follow action names from templates → controllers
+- Use `console.trace()` to see the complete call stack
+
+The guide includes actual code examples from each file with detailed comments explaining what happens at each step. This should help you understand exactly how data flows from the UI through EmberJS to the TR-181 REST API and back.
+
+**Pro tip**: Open the guide and keep it beside you while exploring the actual prpl-webui code. Add the suggested `console.log` statements to see the flow happening in real-time in your browser's developer console!
+
+
+
+I'll help you configure logging for amx-fcgi and session_httpprocess in prplOS. Let me first check the prplOS documentation to provide you with accurate guidance.Let me search for more specific information about prplOS logging configuration and the components you mentioned.Based on my research of prplOS and the Ambiorix framework, here's a professional guide for enabling logging for `amx-fcgi` and `session_httpprocess` on your prplOS device:
+
+## Professional Logging Guide for prplOS with amx-fcgi
+
+### 1. **Understanding the prplOS Logging Architecture**
+
+prplOS uses the Ambiorix framework for its data model and FastCGI applications. The logging system typically follows standard Linux syslog practices with these components:
+- **rsyslog/syslog-ng**: System logging daemon
+- **amx-fcgi**: FastCGI handler for HTTP requests in Ambiorix
+- **session_httpprocess**: Session management component
+
+### 2. **Enable System-Level Logging**
+
+First, ensure rsyslog is running and properly configured:
+
+```bash
+# Check rsyslog status
+systemctl status rsyslog
+
+# If not running, start it
+systemctl start rsyslog
+systemctl enable rsyslog
+```
+
+### 3. **Configure Syslog for Application Logging**
+
+Create a dedicated configuration for your amx-fcgi logs. Edit or create `/etc/rsyslog.d/50-amx-fcgi.conf`:
+
+```bash
+# Log amx-fcgi messages to separate file
+local0.*    /var/log/amx-fcgi.log
+local1.*    /var/log/session-http.log
+
+# Prevent these from going to /var/log/messages
+*.info;mail.none;authpriv.none;cron.none;local0.none;local1.none    /var/log/messages
+```
+
+### 4. **Configure amx-fcgi Debug Logging**
+
+For amx-fcgi, you'll need to modify its configuration to enable debug logging:
+
+```bash
+# Set environment variables for debug logging
+export AMX_LOG_LEVEL=DEBUG
+export AMX_LOG_FACILITY=local0
+
+# For verbose HTTP request/response logging
+export AMX_HTTP_DEBUG=1
+export AMX_HTTP_LOG_HEADERS=1
+export AMX_HTTP_LOG_BODY=1
+```
+
+### 5. **Enable Session HTTP Process Logging**
+
+For session_httpprocess logging, configure these parameters:
+
+```bash
+# Create session logging configuration
+cat > /etc/ambiorix/session-logging.conf << EOF
+[logging]
+level = DEBUG
+facility = local1
+log_requests = true
+log_headers = true
+log_params = true
+log_response = true
+log_status_codes = true
+EOF
+```
+
+### 6. **Configure HTTP Request/Response Logging**
+
+To capture the complete HTTP flow (endpoints, backend transfers, headers, status codes):
+
+```bash
+# Create detailed logging configuration
+cat > /etc/ambiorix/http-debug.conf << EOF
+[http_logging]
+# Log all HTTP endpoints
+log_endpoints = true
+
+# Log request details
+log_request_method = true
+log_request_uri = true
+log_request_headers = true
+log_request_params = true
+log_request_body = true
+
+# Log backend communication
+log_backend_calls = true
+log_backend_timing = true
+
+# Log response details
+log_response_status = true
+log_response_headers = true
+log_response_body = true
+
+# Output format
+format = json
+timestamp = iso8601
+EOF
+```
+
+### 7. **Real-time Log Monitoring**
+
+Monitor your logs in real-time:
+
+```bash
+# Monitor amx-fcgi logs
+tail -f /var/log/amx-fcgi.log
+
+# Monitor session logs
+tail -f /var/log/session-http.log
+
+# Monitor all syslog messages
+tail -f /var/log/syslog
+
+# Filter for specific components
+journalctl -u amx-fcgi -f
+```
+
+### 8. **Advanced Debug Techniques**
+
+For deep debugging of FastCGI requests:
+
+```bash
+# Enable core dumps for debugging crashes
+ulimit -c unlimited
+echo "/tmp/core-%e-%p" > /proc/sys/kernel/core_pattern
+
+# Use strace to trace system calls
+strace -f -e trace=network -p $(pidof amx-fcgi) 2>&1 | tee /tmp/fcgi-trace.log
+
+# Enable tcpdump for network-level debugging
+tcpdump -i any -w /tmp/fcgi-traffic.pcap port 9000
+```
+
+### 9. **Log Rotation Configuration**
+
+Configure log rotation to prevent disk space issues:
+
+```bash
+cat > /etc/logrotate.d/amx-fcgi << EOF
+/var/log/amx-fcgi.log
+/var/log/session-http.log
+{
+    daily
+    rotate 7
+    compress
+    delaycompress
+    missingok
+    notifempty
+    create 644 root root
+    postrotate
+        /bin/kill -HUP $(cat /var/run/rsyslogd.pid 2> /dev/null) 2> /dev/null || true
+    endscript
+}
+EOF
+```
+
+### 10. **Verify Logging Setup**
+
+Test your logging configuration:
+
+```bash
+# Restart services to apply changes
+systemctl restart rsyslog
+systemctl restart amx-fcgi
+
+# Send test log message
+logger -p local0.info "Test amx-fcgi logging"
+logger -p local1.info "Test session logging"
+
+# Check if logs appear
+grep "Test" /var/log/amx-fcgi.log
+grep "Test" /var/log/session-http.log
+```
+
+### 11. **Troubleshooting Tips**
+
+If logs are not appearing:
+
+1. **Check permissions:**
+   ```bash
+   ls -la /var/log/amx-fcgi.log
+   chmod 644 /var/log/amx-fcgi.log
+   ```
+
+2. **Verify syslog configuration:**
+   ```bash
+   rsyslogd -N1  # Check for syntax errors
+   ```
+
+3. **Check if amx-fcgi is using syslog:**
+   ```bash
+   lsof | grep syslog
+   ```
+
+4. **Review system logs for errors:**
+   ```bash
+   journalctl -xe | grep -E "amx|fcgi|session"
+   ```
+
+### Important Notes:
+
+- The exact configuration paths may vary depending on your prplOS version
+- Some environment variables might need to be set in the service unit files
+- For production environments, avoid logging sensitive data like passwords or tokens
+- Consider using structured logging (JSON format) for easier parsing
+- Monitor disk space when enabling verbose logging
+
+This configuration will give you comprehensive visibility into:
+- All HTTP endpoints being called
+- Request parameters and headers
+- Backend service communication
+- Response status codes and bodies
+- Session management activities
+
+Would you like me to provide more specific configuration for any particular aspect of the logging setup?

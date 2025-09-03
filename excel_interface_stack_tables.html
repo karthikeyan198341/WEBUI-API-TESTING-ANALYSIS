@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prplOS Interface Stack - Excel Import Tables</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px;
+        }
+        .instructions {
+            background: #e8f4fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #2196F3;
+        }
+        .color-guide {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .color-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        .color-box {
+            width: 30px;
+            height: 20px;
+            border: 1px solid #333;
+            border-radius: 3px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            font-size: 12px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+        }
+        .table-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 30px 0 15px 0;
+            color: #333;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 5px;
+        }
+        
+        /* Color coding for interface types */
+        .logical { background-color: #FF6B6B !important; color: white; }
+        .ip { background-color: #4ECDC4 !important; color: black; }
+        .bridge { background-color: #45B7D1 !important; color: white; }
+        .link { background-color: #96CEB4 !important; color: black; }
+        .ethernet { background-color: #FFEAA7 !important; color: black; }
+        .wifi { background-color: #DDA0DD !important; color: black; }
+        .radio { background-color: #FFB6C1 !important; color: black; }
+        .ppp { background-color: #F0E68C !important; color: black; }
+        
+        .btn {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            background: #4CAF50;
+            color: white;
+        }
+        .btn:hover {
+            background: #45a049;
+        }
+        
+        .copy-instructions {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔄 prplOS Interface Stack - Excel Import Format</h1>
+            <p>Structured tables with color coding for Excel import</p>
+            <p><strong>Based on Real Device Configuration</strong></p>
+        </div>
+
+        <div class="instructions">
+            <h3>📋 Excel Import Instructions</h3>
+            <ol>
+                <li><strong>Select Table:</strong> Click and drag to select any table below</li>
+                <li><strong>Copy:</strong> Ctrl+C (or use the Copy button)</li>
+                <li><strong>Paste in Excel:</strong> Ctrl+V in your Excel worksheet</li>
+                <li><strong>Apply Colors:</strong> Use the color guide below to format cells in Excel</li>
+                <li><strong>Auto-fit Columns:</strong> Select all columns and double-click column border to auto-fit</li>
+            </ol>
+        </div>
+
+        <div class="color-guide">
+            <div class="color-item">
+                <div class="color-box" style="background: #FF6B6B;"></div>
+                <span><strong>Logical Interfaces:</strong> RGB(255,107,107) - Service abstraction layer</span>
+            </div>
+            <div class="color-item">
+                <div class="color-box" style="background: #4ECDC4;"></div>
+                <span><strong>IP Interfaces:</strong> RGB(78,205,196) - Layer 3 routing/addressing</span>
+            </div>
+            <div class="color-item">
+                <div class="color-box" style="background: #45B7D1;"></div>
+                <span><strong>Bridge Ports:</strong> RGB(69,183,209) - Layer 2 switching</span>
+            </div>
+            <div class="color-item">
+                <div class="color-box" style="background: #96CEB4;"></div>
+                <span><strong>Ethernet Links:</strong> RGB(150,206,180) - Protocol abstraction</span>
+            </div>
+            <div class="color-item">
+                <div class="color-box" style="background: #FFEAA7;"></div>
+                <span><strong>Ethernet Interfaces:</strong> RGB(255,234,167) - Physical ethernet</span>
+            </div>
+            <div class="color-item">
+                <div class="color-box" style="background: #DDA0DD;"></div>
+                <span><strong>WiFi SSIDs:</strong> RGB(221,160,221) - Wireless access points</span>
+            </div>
+            <div class="color-item">
+                <div class="color-box" style="background: #FFB6C1;"></div>
+                <span><strong>WiFi Radios:</strong> RGB(255,182,193) - Physical radio hardware</span>
+            </div>
+            <div class="color-item">
+                <div class="color-box" style="background: #F0E68C;"></div>
+                <span><strong>PPP Interface:</strong> RGB(240,230,140) - WAN authentication</span>
+            </div>
+        </div>
+
+        <div class="copy-instructions">
+            <strong>💡 Tip:</strong> After pasting in Excel, you can use Format Painter to quickly apply colors, or use conditional formatting based on the "Interface Type" column.
+        </div>
+
+        <button class="btn" onclick="copyTable('masterTable')">Copy Master Interface Table</button>
+        <button class="btn" onclick="copyTable('networkTable')">Copy Network Service Table</button>
+        <button class="btn" onclick="copyTable('wifiTable')">Copy WiFi Configuration Table</button>
+
+        <div class="table-title">🔧 Master Interface Stack Table</div>
+        <table id="masterTable">
+            <thead>
+                <tr>
+                    <th>Stack Row</th>
+                    <th>Interface Name</th>
+                    <th>Interface Type</th>
+                    <th>TR-181 Path</th>
+                    <th>Alias</th>
+                    <th>Higher Layer Interface</th>
+                    <th>Lower Layer Interface</th>
+                    <th>Network Function</th>
+                    <th>Physical Connection</th>
+                    <th>Excel Color Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>7</td>
+                    <td class="logical">wan</td>
+                    <td class="logical">Logical</td>
+                    <td>Device.Logical.Interface.1</td>
+                    <td>wan</td>
+                    <td>Router Services</td>
+                    <td>Device.IP.Interface.2</td>
+                    <td>Internet connectivity</td>
+                    <td>ETH0 (WAN Port)</td>
+                    <td>RGB(255,107,107)</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td class="logical">lan</td>
+                    <td class="logical">Logical</td>
+                    <td>Device.Logical.Interface.2</td>
+                    <td>lan</td>
+                    <td>LAN Services</td>
+                    <td>Device.IP.Interface.3</td>
+                    <td>Internal network</td>
+                    <td>LAN Bridge</td>
+                    <td>RGB(255,107,107)</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td class="logical">guest</td>
+                    <td class="logical">Logical</td>
+                    <td>Device.Logical.Interface.3</td>
+                    <td>guest</td>
+                    <td>Guest Services</td>
+                    <td>Device.IP.Interface.4</td>
+                    <td>Guest network isolation</td>
+                    <td>Guest Bridge</td>
+                    <td>RGB(255,107,107)</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td class="logical">lcm</td>
+                    <td class="logical">Logical</td>
+                    <td>Device.Logical.Interface.4</td>
+                    <td>lcm</td>
+                    <td>Container Management</td>
+                    <td>Device.IP.Interface.5</td>
+                    <td>Lifecycle management</td>
+                    <td>LCM Bridge</td>
+                    <td>RGB(255,107,107)</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td class="logical">voip</td>
+                    <td class="logical">Logical</td>
+                    <td>Device.Logical.Interface.5</td>
+                    <td>voip</td>
+                    <td>VoIP Services</td>
+                    <td>Device.IP.Interface.9</td>
+                    <td>Voice telephony</td>
+                    <td>ETH0 (Shared WAN)</td>
+                    <td>RGB(255,107,107)</td>
+                </tr>
+                <tr>
+                    <td>22</td>
+                    <td class="logical">mgmt</td>
+                    <td class="logical">Logical</td>
+                    <td>Device.Logical.Interface.6</td>
+                    <td>mgmt</td>
+                    <td>Management Services</td>
+                    <td>Device.IP.Interface.11</td>
+                    <td>Device management</td>
+                    <td>ETH0 (Shared WAN)</td>
+                    <td>RGB(255,107,107)</td>
+                </tr>
+                <tr>
+                    <td>24</td>
+                    <td class="logical">iptv</td>
+                    <td class="logical">Logical</td>
+                    <td>Device.Logical.Interface.7</td>
+                    <td>iptv</td>
+                    <td>IPTV Services</td>
+                    <td>Device.IP.Interface.10</td>
+                    <td>Television streaming</td>
+                    <td>ETH0 (Shared WAN)</td>
+                    <td>RGB(255,107,107)</td>
+                </tr>
+                <tr>
+                    <td>26</td>
+                    <td class="ip">IP.Interface.2</td>
+                    <td class="ip">IP Interface</td>
+                    <td>Device.IP.Interface.2</td>
+                    <td>wan</td>
+                    <td>Device.Logical.Interface.1</td>
+                    <td>Device.Ethernet.Link.2</td>
+                    <td>WAN IP addressing</td>
+                    <td>ETH0</td>
+                    <td>RGB(78,205,196)</td>
+                </tr>
+                <tr>
+                    <td>31</td>
+                    <td class="ip">IP.Interface.3</td>
+                    <td class="ip">IP Interface</td>
+                    <td>Device.IP.Interface.3</td>
+                    <td>lan</td>
+                    <td>Device.Logical.Interface.2</td>
+                    <td>Device.Ethernet.Link.3</td>
+                    <td>LAN IP addressing</td>
+                    <td>LAN Bridge</td>
+                    <td>RGB(78,205,196)</td>
+                </tr>
+                <tr>
+                    <td>28</td>
+                    <td class="ip">IP.Interface.4</td>
+                    <td class="ip">IP Interface</td>
+                    <td>Device.IP.Interface.4</td>
+                    <td>guest</td>
+                    <td>Device.Logical.Interface.3</td>
+                    <td>Device.Ethernet.Link.4</td>
+                    <td>Guest IP addressing</td>
+                    <td>Guest Bridge</td>
+                    <td>RGB(78,205,196)</td>
+                </tr>
+                <tr>
+                    <td>32</td>
+                    <td class="ip">IP.Interface.5</td>
+                    <td class="ip">IP Interface</td>
+                    <td>Device.IP.Interface.5</td>
+                    <td>lcm</td>
+                    <td>Device.Logical.Interface.4</td>
+                    <td>Device.Ethernet.Link.5</td>
+                    <td>LCM IP addressing</td>
+                    <td>LCM Bridge</td>
+                    <td>RGB(78,205,196)</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="link">Ethernet.Link.3</td>
+                    <td class="link">Ethernet Link</td>
+                    <td>Device.Ethernet.Link.3</td>
+                    <td>bridge_lan</td>
+                    <td>Device.IP.Interface.3</td>
+                    <td>Device.Bridging.Bridge.1.Port.1</td>
+                    <td>LAN bridge connection</td>
+                    <td>LAN Bridge</td>
+                    <td>RGB(150,206,180)</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td class="link">Ethernet.Link.4</td>
+                    <td class="link">Ethernet Link</td>
+                    <td>Device.Ethernet.Link.4</td>
+                    <td>bridge_guest</td>
+                    <td>Device.IP.Interface.4</td>
+                    <td>Device.Bridging.Bridge.2.Port.1</td>
+                    <td>Guest bridge connection</td>
+                    <td>Guest Bridge</td>
+                    <td>RGB(150,206,180)</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td class="link">Ethernet.Link.5</td>
+                    <td class="link">Ethernet Link</td>
+                    <td>Device.Ethernet.Link.5</td>
+                    <td>bridge_lcm</td>
+                    <td>Device.IP.Interface.5</td>
+                    <td>Device.Bridging.Bridge.3.Port.1</td>
+                    <td>LCM bridge connection</td>
+                    <td>LCM Bridge</td>
+                    <td>RGB(150,206,180)</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td class="bridge">Bridge.1.Port.1</td>
+                    <td class="bridge">Bridge Port</td>
+                    <td>Device.Bridging.Bridge.1.Port.1</td>
+                    <td>lan_bridge</td>
+                    <td>Device.Ethernet.Link.3</td>
+                    <td>Multiple bridge ports</td>
+                    <td>LAN bridge management</td>
+                    <td>Virtual (Management)</td>
+                    <td>RGB(69,183,209)</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td class="bridge">Bridge.1.Port.2</td>
+                    <td class="bridge">Bridge Port</td>
+                    <td>Device.Bridging.Bridge.1.Port.2</td>
+                    <td>ETH1</td>
+                    <td>Device.Bridging.Bridge.1.Port.1</td>
+                    <td>Device.Ethernet.Interface.2</td>
+                    <td>ETH1 bridge connection</td>
+                    <td>ETH1 Physical Port</td>
+                    <td>RGB(69,183,209)</td>
+                </tr>
+                <tr>
+                    <td>44</td>
+                    <td class="bridge">Bridge.1.Port.6</td>
+                    <td class="bridge">Bridge Port</td>
+                    <td>Device.Bridging.Bridge.1.Port.6</td>
+                    <td>default_wl0</td>
+                    <td>Device.Bridging.Bridge.1.Port.1</td>
+                    <td>Device.WiFi.SSID.1</td>
+                    <td>2.4GHz WiFi bridge connection</td>
+                    <td>WiFi Radio 1</td>
+                    <td>RGB(69,183,209)</td>
+                </tr>
+                <tr>
+                    <td>43</td>
+                    <td class="wifi">WiFi.SSID.1</td>
+                    <td class="wifi">WiFi SSID</td>
+                    <td>Device.WiFi.SSID.1</td>
+                    <td>DEFAULT_WL0_fake</td>
+                    <td>Device.Bridging.Bridge.1.Port.6</td>
+                    <td>Device.WiFi.Radio.1</td>
+                    <td>Primary 2.4GHz access point</td>
+                    <td>2.4GHz Radio</td>
+                    <td>RGB(221,160,221)</td>
+                </tr>
+                <tr>
+                    <td>36</td>
+                    <td class="wifi">WiFi.SSID.3</td>
+                    <td class="wifi">WiFi SSID</td>
+                    <td>Device.WiFi.SSID.3</td>
+                    <td>DEFAULT_WL1_fake</td>
+                    <td>Device.Bridging.Bridge.1.Port.8</td>
+                    <td>Device.WiFi.Radio.2</td>
+                    <td>Primary 5GHz access point</td>
+                    <td>5GHz Radio</td>
+                    <td>RGB(221,160,221)</td>
+                </tr>
+                <tr>
+                    <td>46</td>
+                    <td class="wifi">WiFi.SSID.5</td>
+                    <td class="wifi">WiFi SSID</td>
+                    <td>Device.WiFi.SSID.5</td>
+                    <td>DEFAULT_WL2_fake</td>
+                    <td>Device.Bridging.Bridge.1.Port.10</td>
+                    <td>Device.WiFi.Radio.3</td>
+                    <td>Primary 6GHz access point</td>
+                    <td>6GHz Radio</td>
+                    <td>RGB(221,160,221)</td>
+                </tr>
+                <tr>
+                    <td>N/A</td>
+                    <td class="radio">WiFi.Radio.1</td>
+                    <td class="radio">WiFi Radio</td>
+                    <td>Device.WiFi.Radio.1</td>
+                    <td>wl0</td>
+                    <td>Multiple WiFi SSIDs</td>
+                    <td>Physical Hardware</td>
+                    <td>2.4GHz radio hardware</td>
+                    <td>2.4GHz Physical Radio</td>
+                    <td>RGB(255,182,193)</td>
+                </tr>
+                <tr>
+                    <td>N/A</td>
+                    <td class="radio">WiFi.Radio.2</td>
+                    <td class="radio">WiFi Radio</td>
+                    <td>Device.WiFi.Radio.2</td>
+                    <td>wl1</td>
+                    <td>Multiple WiFi SSIDs</td>
+                    <td>Physical Hardware</td>
+                    <td>5GHz radio hardware</td>
+                    <td>5GHz Physical Radio</td>
+                    <td>RGB(255,182,193)</td>
+                </tr>
+                <tr>
+                    <td>N/A</td>
+                    <td class="radio">WiFi.Radio.3</td>
+                    <td class="radio">WiFi Radio</td>
+                    <td>Device.WiFi.Radio.3</td>
+                    <td>wl2</td>
+                    <td>Multiple WiFi SSIDs</td>
+                    <td>Physical Hardware</td>
+                    <td>6GHz radio hardware</td>
+                    <td>6GHz Physical Radio</td>
+                    <td>RGB(255,182,193)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="table-title">🌐 Network Service Configuration Table</div>
+        <table id="networkTable">
+            <thead>
+                <tr>
+                    <th>Service Name</th>
+                    <th>Logical Interface</th>
+                    <th>IP Interface</th>
+                    <th>Physical Connection</th>
+                    <th>Network Subnet</th>
+                    <th>Service Type</th>
+                    <th>Access Level</th>
+                    <th>QoS Priority</th>
+                    <th>Excel Color Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="logical">
+                    <td>Internet Access</td>
+                    <td>Device.Logical.Interface.1 (wan)</td>
+                    <td>Device.IP.Interface.2</td>
+                    <td>ETH0 (WAN Port)</td>
+                    <td>DHCP/Static from ISP</td>
+                    <td>Primary Internet</td>
+                    <td>Full Access</td>
+                    <td>Normal</td>
+                    <td>RGB(255,107,107)</td>
+                </tr>
+                <tr class="logical">
+                    <td>LAN Network</td>
+                    <td>Device.Logical.Interface.2 (lan)</td>
+                    <td>Device.IP.Interface.3</td>
+                    <td>LAN Bridge (4 ETH + 6 WiFi)</td>
+                    <td>192.168.1.0/24 (typical)</td>
+                    <td>Internal Network</td>
+                    <td>Full Access</td>
+                    <td>Normal</td>
+                    <td>RGB(255,107,107)</td>
+                </tr>
+                <tr class="logical">
+                    <td>Guest Network</td>
+                    <td>Device.Logical.Interface.3 (guest)</td>
+                    <td>Device.IP.Interface.4</td>
+                    <td>Guest Bridge</td>
+                    <td>192.168.2.0/24</td>
+                    <td>Guest Access</td>
+                    <td>Internet Only</td>
+                    <td>Low</td>
+                    <td>RGB(255,107,107)</td>
+                </tr>
+                <tr class="logical">
+                    <td>Container LCM</td>
+                    <td>Device.Logical.Interface.4 (lcm)</td>
+                    <td>Device.IP.Interface.5</td>
+                    <td>LCM Bridge</td>
+                    <td>192.168.5.0/24</td>
+                    <td>Management</td>
+                    <td>Admin Only</td>
+                    <td>High</td>
+                    <td>RGB(255,107,107)</td>
+                </tr>
+                <tr class="logical">
+                    <td>VoIP Service</td>
+                    <td>Device.Logical.Interface.5 (voip)</td>
+                    <td>Device.IP.Interface.9</td>
+                    <td>ETH0 (Shared WAN)</td>
+                    <td>Service Provider VLAN</td>
+                    <td>Voice Telephony</td>
+                    <td>Service Specific</td>
+                    <td>Highest</td>
+                    <td>RGB(255,107,107)</td>
+                </tr>
+                <tr class="logical">
+                    <td>IPTV Service</td>
+                    <td>Device.Logical.Interface.7 (iptv)</td>
+                    <td>Device.IP.Interface.10</td>
+                    <td>ETH0 (Shared WAN)</td>
+                    <td>Multicast VLAN</td>
+                    <td>Television</td>
+                    <td>Service Specific</td>
+                    <td>High</td>
+                    <td>RGB(255,107,107)</td>
+                </tr>
+                <tr class="logical">
+                    <td>Management</td>
+                    <td>Device.Logical.Interface.6 (mgmt)</td>
+                    <td>Device.IP.Interface.11</td>
+                    <td>ETH0 (Shared WAN)</td>
+                    <td>Management VLAN</td>
+                    <td>Remote Management</td>
+                    <td>Admin Only</td>
+                    <td>High</td>
+                    <td>RGB(255,107,107)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="table-title">📡 WiFi Configuration Table</div>
+        <table id="wifiTable">
+            <thead>
+                <tr>
+                    <th>WiFi Radio</th>
+                    <th>Frequency Band</th>
+                    <th>SSID Instance</th>
+                    <th>SSID Name/Alias</th>
+                    <th>Bridge Port</th>
+                    <th>Network</th>
+                    <th>Purpose</th>
+                    <th>Target Devices</th>
+                    <th>Excel Color Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="radio">
+                    <td>Device.WiFi.Radio.1</td>
+                    <td>2.4GHz</td>
+                    <td>Device.WiFi.SSID.1</td>
+                    <td>DEFAULT_WL0_fake</td>
+                    <td>Bridge.1.Port.6</td>
+                    <td>LAN</td>
+                    <td>Primary Access Point</td>
+                    <td>Legacy devices, IoT</td>
+                    <td>RGB(255,182,193)</td>
+                </tr>
+                <tr class="radio">
+                    <td>Device.WiFi.Radio.1</td>
+                    <td>2.4GHz</td>
+                    <td>Device.WiFi.SSID.2</td>
+                    <td>ep6g0_fake</td>
+                    <td>Bridge.1.Port.7</td>
+                    <td>LAN</td>
+                    <td>Enterprise Profile</td>
+                    <td>Business devices</td>
+                    <td>RGB(255,182,193)</td>
+                </tr>
+                <tr class="radio">
+                    <td>Device.WiFi.Radio.2</td>
+                    <td>5GHz</td>
+                    <td>Device.WiFi.SSID.3</td>
+                    <td>DEFAULT_WL1_fake</td>
+                    <td>Bridge.1.Port.8</td>
+                    <td>LAN</td>
+                    <td>Primary Access Point</td>
+                    <td>High-performance devices</td>
+                    <td>RGB(255,182,193)</td>
+                </tr>
+                <tr class="radio">
+                    <td>Device.WiFi.Radio.2</td>
+                    <td>5GHz</td>
+                    <td>Device.WiFi.SSID.4</td>
+                    <td>ep5g0_fake</td>
+                    <td>Bridge.1.Port.9</td>
+                    <td>LAN</td>
+                    <td>Enterprise Profile</td>
+                    <td>Business clients</td>
+                    <td>RGB(255,182,193)</td>
+                </tr>
+                <tr class="radio">
+                    <td>Device.WiFi.Radio.3</td>
+                    <td>6GHz</td>
+                    <td>Device.WiFi.SSID.5</td>
+                    <td>DEFAULT_WL2_fake</td>
+                    <td>Bridge.1.Port.10</td>
+                    <td>LAN</td>
+                    <td>Primary Access Point</td>
+                    <td>WiFi 6E devices</td>
+                    <td>RGB(255,182,193)</td>
+                </tr>
+                <tr class="radio">
+                    <td>Device.WiFi.Radio.3</td>
+                    <td>6GHz</td>
+                    <td>Device.WiFi.SSID.6</td>
+                    <td>ep2g0_fake</td>
+                    <td>Bridge.1.Port.11</td>
+                    <td>LAN</td>
+                    <td>Enterprise Profile</td>
+                    <td>Ultra-high performance</td>
+                    <td>RGB(255,182,193)</td>
+                </tr>
+                <tr class="radio">
+                    <td>Device.WiFi.Radio.1</td>
+                    <td>2.4GHz</td>
+                    <td>Device.WiFi.SSID.7</td>
+                    <td>DEFAULT_WL0_1</td>
+                    <td>Additional SSID</td>
+                    <td>Secondary</td>
+                    <td>Extended Coverage</td>
+                    <td>Guest or isolated</td>
+                    <td>RGB(255,182,193)</td>
+                </tr>
+                <tr class="radio">
+                    <td>Device.WiFi.Radio.1</td>
+                    <td>2.4GHz</td>
+                    <td>Device.WiFi.SSID.8</td>
+                    <td>DEFAULT_WL0_2</td>
+                    <td>Additional SSID</td>
+                    <td>Tertiary</td>
+                    <td>Special Purpose</td>
+                    <td>Custom applications</td>
+                    <td>RGB(255,182,193)</td>
+                </tr>
+                <tr class="radio">
+                    <td>Device.WiFi.Radio.2</td>
+                    <td>5GHz</td>
+                    <td>Device.WiFi.SSID.11</td>
+                    <td>DEFAULT_WL1_1</td>
+                    <td>Additional SSID</td>
+                    <td>Secondary</td>
+                    <td>Extended Coverage</td>
+                    <td>Extended 5GHz</td>
+                    <td>RGB(255,182,193)</td>
+                </tr>
+                <tr class="radio">
+                    <td>Device.WiFi.Radio.2</td>
+                    <td>5GHz</td>
+                    <td>Device.WiFi.SSID.12</td>
+                    <td>DEFAULT_WL1_2</td>
+                    <td>Additional SSID</td>
+                    <td>Tertiary</td>
+                    <td>Special Purpose</td>
+                    <td>Custom applications</td>
+                    <td>RGB(255,182,193)</td>
+                </tr>
+                <tr class="radio">
+                    <td>Device.WiFi.Radio.3</td>
+                    <td>6GHz</td>
+                    <td>Device.WiFi.SSID.15</td>
+                    <td>DEFAULT_WL2_1</td>
+                    <td>Additional SSID</td>
+                    <td>Secondary</td>
+                    <td>Extended 6GHz</td>
+                    <td>WiFi 6E extended</td>
+                    <td>RGB(255,182,193)</td>
+                </tr>
+                <tr class="radio">
+                    <td>Device.WiFi.Radio.3</td>
+                    <td>6GHz</td>
+                    <td>Device.WiFi.SSID.16</td>
+                    <td>DEFAULT_WL2_2</td>
+                    <td>Additional SSID</td>
+                    <td>Tertiary</td>
+                    <td>Special Purpose</td>
+                    <td>Custom applications</td>
+                    <td>RGB(255,182,193)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="table-title">📊 Bridge Architecture Summary</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Bridge Instance</th>
+                    <th>Bridge Purpose</th>
+                    <th>Management Port</th>
+                    <th>Connected Ports</th>
+                    <th>Physical Connections</th>
+                    <th>Network Isolation</th>
+                    <th>Excel Color Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bridge">
+                    <td>Device.Bridging.Bridge.1</td>
+                    <td>LAN Bridge</td>
+                    <td>Port.1 (lan_bridge)</td>
+                    <td>11 ports total</td>
+                    <td>4 Ethernet + 7 WiFi SSIDs</td>
+                    <td>Full internal access</td>
+                    <td>RGB(69,183,209)</td>
+                </tr>
+                <tr class="bridge">
+                    <td>Device.Bridging.Bridge.2</td>
+                    <td>Guest Bridge</td>
+                    <td>Port.1 (guest_bridge)</td>
+                    <td>Limited ports</td>
+                    <td>Guest WiFi SSIDs</td>
+                    <td>Internet only</td>
+                    <td>RGB(69,183,209)</td>
+                </tr>
+                <tr class="bridge">
+                    <td>Device.Bridging.Bridge.3</td>
+                    <td>LCM Bridge</td>
+                    <td>Port.1 (lcm_bridge)</td>
+                    <td>Container ports</td>
+                    <td>Virtual container interfaces</td>
+                    <td>Admin/container access</td>
+                    <td>RGB(69,183,209)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="instructions">
+            <h3>🎨 Excel Formatting Instructions</h3>
+            <ol>
+                <li><strong>Cell Color:</strong> Select cells → Home → Fill Color → More Colors → Custom → Enter RGB values</li>
+                <li><strong>Conditional Formatting:</strong> Select "Interface Type" column → Home → Conditional Formatting → New Rule → Format cells that contain → Apply colors based on text</li>
+                <li><strong>Auto-size:</strong> Select all columns → Home → Format → AutoFit Column Width</li>
+                <li><strong>Freeze Headers:</strong> Select row 2 → View → Freeze Panes → Freeze Top Row</li>
+                <li><strong>Borders:</strong> Select table → Home → Borders → All Borders</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        function copyTable(tableId) {
+            const table = document.getElementById(tableId);
+            const range = document.createRange();
+            range.selectNode(table);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            
+            try {
+                document.execCommand('copy');
+                alert('Table copied to clipboard! You can now paste it in Excel.');
+            } catch (err) {
+                alert('Copy failed. Please select the table manually and use Ctrl+C');
+            }
+            
+            window.getSelection().removeAllRanges();
+        }
+        
+        // Add click-to-select functionality for tables
+        document.addEventListener('DOMContentLoaded', function() {
+            const tables = document.querySelectorAll('table');
+            tables.forEach(table => {
+                table.addEventListener('click', function() {
+                    const range = document.createRange();
+                    range.selectNode(table);
+                    window.getSelection().removeAllRanges();
+                    window.getSelection().addRange(range);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

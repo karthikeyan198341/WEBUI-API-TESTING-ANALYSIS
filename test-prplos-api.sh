@@ -39,75 +39,28 @@ echo "Response Body: $BODY"
 
 # Step 3: Test with proper TR-181 format
 echo -e "\n3️⃣ Testing TR-181 parameter access..."
-RESPONSE=$(curl -v "$BASE_URL/serviceElements/Device.DeviceInfo.ModelName" \
+curl -v "$BASE_URL/serviceElements/Device.DeviceInfo." \
   -H "Authorization: bearer $SESSION_ID" \
-  -H "Content-Type: application/json")
-
-HTTP_CODE=$(echo "$RESPONSE" | grep "HTTP_CODE:" | cut -d: -f2)
-BODY=$(echo "$RESPONSE" | grep -v "HTTP_CODE:")
-
-echo "Response Code: $HTTP_CODE"
-echo "Response Body: $BODY"
-
+  -H "Content-Type: application/json" \
+  -d '[{"parameters":{},"path":"Device.DeviceInfo."}]'
 
 # Step 4: Test specific parameter
 echo -e "\n4️⃣ Testing specific parameter..."
-RESPONSE=$(curl -v "$BASE_URL/serviceElements/Device.WiFi.SSID.1.SSID" \
+curl -v "$BASE_URL/serviceElements/Device.WiFi.SSID.1.SSID" \
   -H "Authorization: bearer $SESSION_ID" \
-  -H "Content-Type: application/json")
+  -H "Content-Type: application/json0"
 
-HTTP_CODE=$(echo "$RESPONSE" | grep "HTTP_CODE:" | cut -d: -f2)
-BODY=$(echo "$RESPONSE" | grep -v "HTTP_CODE:")
+#Final step
+echo -e "\n\n====FINAL COMMAND============"
+echo -e "\n\n====FINAL COMMAND============"
 
-echo "Response Code: $HTTP_CODE"
-echo "Response Body: $BODY"
+curl -v POST http://192.168.1.1/upload/backupconfig.tar.gz \
+	-H "Authorization: bearer $SESSION_ID" \
+        -H "Content-Type: application/json"
 
-# Step 5: Test specific parameter
-echo -e "\n5. Testing specific parameter..."
-RESPONSE=$(curl -v "$BASE_URL/serviceElements/Device.WiFi.SSID.2.SSID" \
-  -H "Authorization: bearer $SESSION_ID" \
-  -H "Content-Type: application/json")
-
-HTTP_CODE=$(echo "$RESPONSE" | grep "HTTP_CODE:" | cut -d: -f2)
-BODY=$(echo "$RESPONSE" | grep -v "HTTP_CODE:")
-
-echo "Response Code: $HTTP_CODE"
-echo "Response Body: $BODY"
-
-# Step 6: Test specific OBJECT BULK GET parameter
-echo -e "\6. Testing specific OBJECT BULK GET parameter..."
-RESPONSE=$(curl -v "$BASE_URL/serviceElements/Device.WiFi.SSID." \
-  -H "Authorization: bearer $SESSION_ID" \
-  -H "Content-Type: application/json")
-
-HTTP_CODE=$(echo "$RESPONSE" | grep "HTTP_CODE:" | cut -d: -f2)
-BODY=$(echo "$RESPONSE" | grep -v "HTTP_CODE:")
-
-echo "Response Code: $HTTP_CODE"
-echo "Response Body: $BODY"
-
-# Step 7: Test specific OBJECT BULK GET RADIO parameter
-echo -e "\7. Testing specific OBJECT BULK GET RADIO parameter..."
-RESPONSE=$(curl -v "$BASE_URL/serviceElements/Device.WiFi.Radio." \
-  -H "Authorization: bearer $SESSION_ID" \
-  -H "Content-Type: application/json")
-
-HTTP_CODE=$(echo "$RESPONSE" | grep "HTTP_CODE:" | cut -d: -f2)
-BODY=$(echo "$RESPONSE" | grep -v "HTTP_CODE:")
-
-echo "Response Code: $HTTP_CODE"
-echo "Response Body: $BODY"
+curl -v POST "http://192.168.1.1/commands" \
+	-H "Authorization: bearer $SESSION_ID" \
+      	-H "Content-Type: application/json" \
+	-d '{"command": "BcmSystem.Upgrade.upgrade","inputArgs": {"fileName": "HNE2306-40.00.01-EA.667bd2dc0.bin","fileType": "bcmImage"},"method": "upgrade","sendresp": "true"}'
 
 
-
-# Step FINAL: Test with proper TR-181 format
-echo -e "\n3️⃣ Testing TR-181 BULK parameter access..."
-RESPONSE=$(curl -v "$BASE_URL/serviceElements/Device.DeviceInfo." \
-  -H "Authorization: bearer $SESSION_ID" \
-  -H "Content-Type: application/json")
-
-HTTP_CODE=$(echo "$RESPONSE" | grep "HTTP_CODE:" | cut -d: -f2)
-BODY=$(echo "$RESPONSE" | grep -v "HTTP_CODE:")
-
-echo "Response Code: $HTTP_CODE"
-echo "Response Body: $BODY"

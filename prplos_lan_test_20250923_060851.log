@@ -1,0 +1,614 @@
+2025-09-23 06:08:51 - Invalid JSON response: <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PrplWebui</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+<meta name="prpl-webui/config/environment" content="%7B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environment%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C%22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAPPER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue%2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ONLY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%22name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplos-v4.0.0%2B0c6d3567%22%7D%2C%22ember-simple-auth%22%3A%7B%22routeAfterAuthentication%22%3A%22authenticated.dashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingProxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+
+    <link integrity="" rel="stylesheet" href="/assets/vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+    <link integrity="" rel="stylesheet" href="/assets/prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+
+    
+  </head>
+  <body>
+    
+
+    <script src="/assets/vendor-7b4b8e14de6f0af6439f2a33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84AjNK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPhXOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd31vAckUHzA==" ></script>
+<script src="/assets/chunk.48.c05d308d4a0d75879e66.js" integrity="sha256-QcPKguwZwI8ID0f1YTnZ9IqBWv3OYSIxP4M6KAcLtuE= sha512-EV4pgGfB0184pEBGo3fM37KWlLkkrvvHNQHs/2/6UTooNLZppzWmKllT7gD/9kLVEdLJMG4/fZj5U14cWZ7J9Q==" ></script>
+<script src="/assets/chunk.143.43895c0a926a9ef996fb.js" integrity="sha256-IM/NlO6823Pq0Ru6RCg9evMwNFSaff/O8trGt9jxESU= sha512-BXG43Z7+q0Dsj+nuKMPkwVdBieIUgUf7uCw5r4osR48Zdhomw88ebFYfY+/t99JDFPgj+p5eC4FtWXpqlHpriQ==" ></script>
+    <script src="/assets/prpl-webui-a84cab2ef69f4ecf65f995bb0a1960eb.js" integrity="sha256-ozQzUgB6FJePWYgeYmWVFQbNjzDTIEaLwJudK/oFSMU= sha512-DTopXfQQM8Bx2by8ayhU0w9czd3CClaAJs0Iv6/69SX4fflCxIW4VBCutSo52KoamPsfX/IzYFZCexxQJhpu4g==" ></script>
+
+    <div id="ember-bootstrap-wormhole"></div>
+<div id="ember-basic-dropdown-wormhole"></div>
+  </body>
+</html>
+2025-09-23 06:08:51 - Invalid JSON response: <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PrplWebui</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+<meta name="prpl-webui/config/environment" content="%7B%22modulePrefix%22%3A%22prpl-webui%22%2C%22environment%22%3A%22production%22%2C%22rootURL%22%3A%22%2F%22%2C%22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAPPER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue%2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ONLY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%22name%22%3A%22prpl-webui%22%2C%22version%22%3A%22prplos-v4.0.0%2B0c6d3567%22%7D%2C%22ember-simple-auth%22%3A%7B%22routeAfterAuthentication%22%3A%22authenticated.dashboard%22%7D%2C%22ember-cli-mirage%22%3A%7B%22usingProxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+
+    <link integrity="" rel="stylesheet" href="/assets/vendor-d41d8cd98f00b204e9800998ecf8427e.css">
+    <link integrity="" rel="stylesheet" href="/assets/prpl-webui-88543930afa6cdf0c2b1877867006671.css">
+
+    
+  </head>
+  <body>
+    
+
+    <script src="/assets/vendor-7b4b8e14de6f0af6439f2a33f78421e1.js" integrity="sha256-gcZY/IxVGqnj50Yoh84AjNK6vaUb5U0Iajxin6oVN84= sha512-+8zVhkopzcK85RVV72uUKPhXOivJjZvEKajyszBs1874wLpVCbQk6zG4cU56GW9Co02XFenj1yFd31vAckUHzA==" ></script>
+<script src="/assets/chunk.48.c05d308d4a0d75879e66.js" integrity="sha256-QcPKguwZwI8ID0f1YTnZ9IqBWv3OYSIxP4M6KAcLtuE= sha512-EV4pgGfB0184pEBGo3fM37KWlLkkrvvHNQHs/2/6UTooNLZppzWmKllT7gD/9kLVEdLJMG4/fZj5U14cWZ7J9Q==" ></script>
+<script src="/assets/chunk.143.43895c0a926a9ef996fb.js" integrity="sha256-IM/NlO6823Pq0Ru6RCg9evMwNFSaff/O8trGt9jxESU= sha512-BXG43Z7+q0Dsj+nuKMPkwVdBieIUgUf7uCw5r4osR48Zdhomw88ebFYfY+/t99JDFPgj+p5eC4FtWXpqlHpriQ==" ></script>
+    <script src="/assets/prpl-webui-a84cab2ef69f4ecf65f995bb0a1960eb.js" integrity="sha256-ozQzUgB6FJePWYgeYmWVFQbNjzDTIEaLwJudK/oFSMU= sha512-DTopXfQQM8Bx2by8ayhU0w9czd3CClaAJs0Iv6/69SX4fflCxIW4VBCutSo52KoamPsfX/IzYFZCexxQJhpu4g==" ></script>
+
+    <div id="ember-bootstrap-wormhole"></div>
+<div id="ember-basic-dropdown-wormhole"></div>
+  </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 400
+2025-09-23 06:08:51 - Response: 
+2025-09-23 06:08:51 - Expected HTTP 401, got 400
+2025-09-23 06:08:51 - Response: 
+2025-09-23 06:08:51 - Expected HTTP 401, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 400, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 400, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 400, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 400, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: 
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: 
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: 
+2025-09-23 06:08:51 - Expected HTTP 400, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 400, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 403, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+404
+404
+404
+404
+200
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+HTTPSTATUS:404;TIME:0.001798<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+HTTPSTATUS:404;TIME:0.002170<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+HTTPSTATUS:404;TIME:0.002253<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+HTTPSTATUS:404;TIME:0.002163<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+HTTPSTATUS:404;TIME:0.003035
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+404
+200
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+HTTPSTATUS:404;TIME:0.001697<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+HTTPSTATUS:404;TIME:0.001599
+2025-09-23 06:08:51 - Expected HTTP 200, got 404
+2025-09-23 06:08:51 - Response: 
+2025-09-23 06:08:51 - Expected HTTP 400, got 404
+2025-09-23 06:08:51 - Response: <!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>
+2025-09-23 06:08:51 - Test suite completed with 3/55 tests passed
